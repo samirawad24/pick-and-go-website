@@ -190,6 +190,8 @@ const I18N = {
     'faq.q8': 'Do you offer long-term rentals?',
     'faq.a8': "Yes — weekly and monthly rates are available with a discount. Mention your dates in the inquiry form and we'll send a custom quote.",
 
+    'reviews.googleBtn': 'See all reviews on Google',
+
     'footer.desc':   'Premium rental cars for South Florida travelers.',
     'footer.ready':  'Ready to ride?',
     'footer.contact':'Contact',
@@ -305,6 +307,8 @@ const I18N = {
     'faq.a7': 'Hacemos seguimiento de tu vuelo. Llegues temprano o tarde, ahí estaremos. Sin cargos extra por retrasos.',
     'faq.q8': '¿Ofrecen rentas a largo plazo?',
     'faq.a8': 'Sí — tenemos tarifas semanales y mensuales con descuento. Menciona tus fechas en el formulario y te enviaremos una cotización personalizada.',
+
+    'reviews.googleBtn': 'Ver todas las reseñas en Google',
 
     'footer.desc':   'Renta de autos premium para viajeros del Sur de Florida.',
     'footer.ready':  '¿Listo para conducir?',
@@ -611,6 +615,48 @@ function wireFormSubmit() {
   });
 }
 
+/* ---------- Scroll reveal ---------- */
+function wireScrollReveal() {
+  const groups = [
+    { sel: '.fleet h2, .fleet .section-sub, .reviews h2, .reviews .section-sub, .why-label, .why-statement h2, .why-body, .faq h2, .faq .section-sub, .reserve h2, .reserve .section-sub', stagger: false },
+    { sel: '.reserve-form', stagger: false },
+    { sel: '.fleet-card', stagger: true },
+    { sel: '.review-card', stagger: true },
+    { sel: '.reviews-cta', stagger: false },
+    { sel: '.why-list li', stagger: true },
+    { sel: '.faq-item',   stagger: true },
+  ];
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (!entry.isIntersecting) return;
+      const el = entry.target;
+      const delay = parseFloat(el.dataset.rvDelay || 0);
+      setTimeout(() => {
+        el.style.opacity = '1';
+        el.style.transform = 'translateY(0)';
+        setTimeout(() => {
+          el.style.opacity = '';
+          el.style.transform = '';
+          el.style.transition = '';
+          delete el.dataset.rvDelay;
+        }, 720);
+      }, delay);
+      observer.unobserve(el);
+    });
+  }, { threshold: 0.08, rootMargin: '0px 0px -36px 0px' });
+
+  groups.forEach(({ sel, stagger }) => {
+    document.querySelectorAll(sel).forEach((el, i) => {
+      el.style.opacity = '0';
+      el.style.transform = 'translateY(28px)';
+      el.style.transition = 'opacity 0.65s ease, transform 0.65s ease';
+      if (stagger) el.dataset.rvDelay = (i % 6) * 90;
+      observer.observe(el);
+    });
+  });
+}
+
 /* ---------- Active nav link on scroll ---------- */
 function wireScrollSpy() {
   const sections = ['top', 'reserve', 'fleet', 'reviews', 'why', 'faq'];
@@ -654,4 +700,5 @@ document.addEventListener('DOMContentLoaded', () => {
   wireFormSubmit();
   wireToastClose();
   wireScrollSpy();
+  wireScrollReveal();
 });
