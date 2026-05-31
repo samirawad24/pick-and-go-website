@@ -97,11 +97,10 @@ const I18N = {
     'hero.ctaWa':    'Chat on WhatsApp',
     'hero.ctaForm':  'Get a Quote →',
 
-    'trust.rating':    '5-star rated · 100+ happy renters',
-    'trust.fees':      'No hidden fees',
-    'trust.booking':   'Book in 60 seconds',
-    'trust.insurance': 'Insurance included',
-    'trust.family':    'Family-Owned Business',
+    'trust.rating':    '5-Star Rated · 100+ Renters',
+    'trust.fees':      'No Hidden Fees',
+    'trust.booking':   'Reserve in 60 Seconds',
+    'trust.insurance': 'Insurance Included',
 
     'form.title':      'Reserve your car',
     'form.subtitle':   "Tell us where, when, and what you need. We'll reply on WhatsApp within minutes.",
@@ -216,11 +215,10 @@ const I18N = {
     'hero.ctaWa':    'Chat por WhatsApp',
     'hero.ctaForm':  'Cotizar →',
 
-    'trust.rating':    'Calificación 5 estrellas · 100+ clientes felices',
-    'trust.fees':      'Sin cargos ocultos',
-    'trust.booking':   'Reserva en 60 segundos',
-    'trust.insurance': 'Seguro incluido',
-    'trust.family':    'Empresa Familiar',
+    'trust.rating':    '5 Estrellas · 100+ Clientes',
+    'trust.fees':      'Sin Cargos Ocultos',
+    'trust.booking':   'Reserva en 60 Segundos',
+    'trust.insurance': 'Seguro Incluido',
 
     'form.title':      'Reserva tu auto',
     'form.subtitle':   'Cuéntanos dónde, cuándo y qué necesitas. Te responderemos por WhatsApp en minutos.',
