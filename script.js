@@ -101,6 +101,7 @@ const I18N = {
     'trust.fees':      'No hidden fees',
     'trust.booking':   'Book in 60 seconds',
     'trust.insurance': 'Insurance included',
+    'trust.family':    'Family-Owned Business',
 
     'form.title':      'Reserve your car',
     'form.subtitle':   "Tell us where, when, and what you need. We'll reply on WhatsApp within minutes.",
@@ -219,6 +220,7 @@ const I18N = {
     'trust.fees':      'Sin cargos ocultos',
     'trust.booking':   'Reserva en 60 segundos',
     'trust.insurance': 'Seguro incluido',
+    'trust.family':    'Empresa Familiar',
 
     'form.title':      'Reserva tu auto',
     'form.subtitle':   'Cuéntanos dónde, cuándo y qué necesitas. Te responderemos por WhatsApp en minutos.',

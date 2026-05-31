@@ -14,6 +14,8 @@
   --wa-dark:     #1DA851;
   --white:       #ffffff;
   --off:         #F6F7FB;
+  --warm-off:    #FAF8F5;
+  --warm-card:   #FFFCF8;
   --text:        #1A1F2D;
   --text-light:  #5C6379;
   --border:      #E4E7EE;
@@ -31,12 +33,16 @@
 html { scroll-behavior: smooth; }
 
 body {
-  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-family: 'Source Sans 3', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   font-size: 16px;
   line-height: 1.6;
   color: var(--text);
   background: var(--white);
   -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3, .eyebrow, .brand, .brand-pick, .brand-go, .brand-amp, .btn {
+  font-family: 'Lexend', 'Inter', -apple-system, sans-serif;
 }
 
 img { max-width: 100%; display: block; }
@@ -309,9 +315,9 @@ h3 { font-size: 1.15rem; font-weight: 700; line-height: 1.3; }
   inset: 0;
   background: linear-gradient(
     135deg,
-    rgba(10, 18, 42, 0.88) 0%,
-    rgba(15, 27, 60, 0.75) 60%,
-    rgba(15, 27, 60, 0.6) 100%
+    rgba(8, 14, 34, 0.92) 0%,
+    rgba(15, 27, 60, 0.80) 55%,
+    rgba(20, 35, 75, 0.55) 100%
   );
   z-index: 1;
 }
@@ -381,7 +387,7 @@ h3 { font-size: 1.15rem; font-weight: 700; line-height: 1.3; }
 /* ===== Reserve / Inquiry Form ===== */
 .reserve {
   padding: 5rem 0;
-  background: var(--off);
+  background: var(--warm-off);
 }
 .reserve h2 { text-align: center; }
 .reserve .section-sub { text-align: center; margin-left: auto; margin-right: auto; }
@@ -1244,6 +1250,109 @@ h3 { font-size: 1.15rem; font-weight: 700; line-height: 1.3; }
 .review-card:hover {
   transform: translateY(-7px);
   box-shadow: 0 22px 44px rgba(15,27,60,0.22);
+}
+
+/* Family-Owned badge */
+.family-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: rgba(245, 130, 32, 0.18);
+  border: 1px solid rgba(245, 130, 32, 0.45);
+  color: #FFB870;
+  padding: 0.38rem 0.95rem;
+  border-radius: 999px;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  margin-bottom: 1.1rem;
+  backdrop-filter: blur(6px);
+  width: fit-content;
+}
+.family-badge svg { flex-shrink: 0; }
+
+/* Section H2 orange accent underline */
+.fleet h2::after,
+.reviews h2::after,
+.faq h2::after,
+.reserve h2::after {
+  content: '';
+  display: block;
+  width: 44px;
+  height: 4px;
+  background: linear-gradient(90deg, var(--orange), var(--orange-2));
+  margin: 0.65rem auto 0;
+  border-radius: 2px;
+}
+.why-statement h2::after {
+  content: '';
+  display: block;
+  width: 44px;
+  height: 4px;
+  background: linear-gradient(90deg, var(--orange), var(--orange-2));
+  margin: 0.65rem 0 0;
+  border-radius: 2px;
+}
+
+/* Review card decorative quote mark */
+.review-card {
+  position: relative;
+  overflow: hidden;
+}
+.review-card::before {
+  content: '\201C';
+  position: absolute;
+  top: -0.5rem;
+  right: 1rem;
+  font-size: 6rem;
+  line-height: 1;
+  color: var(--orange);
+  opacity: 0.1;
+  font-family: Georgia, 'Times New Roman', serif;
+  font-weight: 900;
+  pointer-events: none;
+  user-select: none;
+}
+
+/* Why-list icon-based design */
+.why-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  min-width: 40px;
+  background: rgba(245, 130, 32, 0.15);
+  border: 1px solid rgba(245, 130, 32, 0.25);
+  border-radius: 10px;
+  color: var(--orange-2);
+  flex-shrink: 0;
+  transition: background 0.2s ease, transform 0.2s ease;
+}
+.why-list li:hover .why-icon {
+  background: rgba(245, 130, 32, 0.25);
+  transform: scale(1.08);
+}
+.why-list li:hover {
+  padding-left: 0.25rem;
+  transition: padding 0.2s ease;
+}
+
+/* Override: why-list items no longer use CSS dot — icons replace it */
+.why-list li::before {
+  display: none;
+}
+
+/* Enhanced fleet card hover — orange glow */
+.fleet-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 24px 48px rgba(15,27,60,0.16), 0 0 0 2px var(--orange);
+  border-color: var(--orange);
+}
+
+/* Reserve form — warm card */
+.reserve-form {
+  background: var(--warm-card);
 }
 
 /* Google Reviews button */
