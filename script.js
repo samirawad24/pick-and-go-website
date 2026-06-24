@@ -100,6 +100,7 @@ const I18N = {
     'hero.eyebrow':  'South Florida · MIA & FLL · Ports · Hotel Delivery',
     'hero.title':    'Pick a car.<br/>Go anywhere.',
     'hero.subtitle': 'Premium rental cars in Miami & Fort Lauderdale. Reserve in 60 seconds. Instant reply via WhatsApp.',
+    'hero.urgency':  '⚡ High demand — only a few vehicles left this week',
     'hero.ctaWa':    'Chat on WhatsApp',
     'hero.ctaForm':  'Get a Quote →',
 
@@ -175,7 +176,8 @@ const I18N = {
     'why.l5':      'Skip the rental counter completely',
     'why.l6':      'Every car detailed before pickup',
     'why.l7':      'Local team — we know South Florida',
-    'why.l8':      'Available 7 days a week',
+    'why.l8':      'Available 24/7, every day of the year',
+    'cred.rebook': 'Flexible Rebooking<br/><small>Change dates anytime</small>',
 
     'faq.title':    'Frequently Asked Questions',
     'faq.subtitle': 'Quick answers to common questions. Still curious? WhatsApp us anytime.',
@@ -216,6 +218,7 @@ const I18N = {
     'hero.eyebrow':  'Sur de Florida · MIA & FLL · Puertos · Entrega en hotel',
     'hero.title':    'Elige tu auto.<br/>Conduce a donde quieras.',
     'hero.subtitle': 'Renta de autos premium en Miami y Fort Lauderdale. Reserva en 60 segundos. Respuesta inmediata por WhatsApp.',
+    'hero.urgency':  '⚡ Alta demanda — quedan pocos vehículos disponibles esta semana',
     'hero.ctaWa':    'Chat por WhatsApp',
     'hero.ctaForm':  'Cotizar →',
 
@@ -291,7 +294,8 @@ const I18N = {
     'why.l5':      'Olvídate del mostrador de renta',
     'why.l6':      'Cada auto detallado antes de la entrega',
     'why.l7':      'Equipo local — conocemos el Sur de Florida',
-    'why.l8':      'Disponibles los 7 días de la semana',
+    'why.l8':      'Disponibles 24/7, los 365 días del año',
+    'cred.rebook': 'Reserva Flexible<br/><small>Cambia la fecha cuando quieras</small>',
 
     'faq.title':    'Preguntas frecuentes',
     'faq.subtitle': '¿Tienes dudas? Aquí están las respuestas. Si aún tienes preguntas, escríbenos por WhatsApp.',
@@ -409,7 +413,11 @@ function setDateDefaults() {
   if (pickup && ret) {
     pickup.addEventListener('change', () => {
       ret.min = pickup.value || today;
-      if (ret.value && ret.value < pickup.value) ret.value = pickup.value;
+      if (!ret.value || ret.value < pickup.value) {
+        const d = new Date(pickup.value);
+        d.setDate(d.getDate() + 3);
+        ret.value = d.toISOString().split('T')[0];
+      }
     });
   }
 }
@@ -707,9 +715,11 @@ function buildWhatsAppMessage(data, lang) {
     `*${L.pickupTime}:* ${data.pickup_time}`,
     '',
     `*${L.name}:* ${data.full_name}`,
-    `*${L.phone}:* ${data.phone}`,
-    `*${L.email}:* ${data.email}`
+    `*${L.phone}:* ${data.phone}`
   ];
+  if (data.email && data.email.trim()) {
+    lines.push(`*${L.email}:* ${data.email.trim()}`);
+  }
   if (data.notes && data.notes.trim()) {
     lines.push('', `*${L.notes}:* ${data.notes.trim()}`);
   }
