@@ -5,6 +5,10 @@
 
 const WHATSAPP_NUMBER = '17542653882';
 
+/* Tracks whether the fleet modal was opened via the Reserve Now category picker,
+   so we know whether to show a "back to categories" button. */
+let cameFromPicker = false;
+
 /* ---------- Fleet modal data ---------- */
 const FLEET_DATA = {
   sedan: {
@@ -203,8 +207,12 @@ const I18N = {
     'footer.contact':'Contact',
     'footer.rights': 'All rights reserved.',
 
-    'mobile.cta':       'Chat on WhatsApp — Book Now',
+    'mobile.cta':       'Chat',
+    'mobile.reserveNow':'Reserve Now',
     'mobile.ctaDrawer': 'Chat on WhatsApp: 754-265-3882',
+    'picker.title':     'Reserve Now',
+    'picker.subtitle':  'Choose a vehicle type',
+    'picker.back':      '← Categories',
   },
 
   es: {
@@ -321,8 +329,12 @@ const I18N = {
     'footer.contact':'Contacto',
     'footer.rights': 'Todos los derechos reservados.',
 
-    'mobile.cta':       'Chat por WhatsApp — Reservar',
+    'mobile.cta':       'Chat',
+    'mobile.reserveNow':'Reservar',
     'mobile.ctaDrawer': 'Chat por WhatsApp: 754-265-3882',
+    'picker.title':     'Reservar',
+    'picker.subtitle':  'Elige el tipo de vehículo',
+    'picker.back':      '← Categorías',
   }
 };
 
@@ -490,9 +502,14 @@ function buildModalContent(category) {
        <option value="Port of Fort Lauderdale">Port of Fort Lauderdale</option>
        <option value="Hotel / Residence">Hotel / Residence</option>`;
 
+  const backBtn = cameFromPicker
+    ? `<button type="button" class="modal-back-btn" id="modalBackBtn">${isEs ? '← Categorías' : '← Categories'}</button>`
+    : '';
+
   return `
     <div class="fleet-modal-header">
-      <div>
+      <div class="fmh-left">
+        ${backBtn}
         <h3 class="modal-title" id="fleetModalTitle">${labels.title}</h3>
         <p class="modal-avail">${labels.avail}</p>
       </div>
@@ -559,6 +576,7 @@ function openFleetModal(category) {
 
   content.innerHTML = buildModalContent(category);
   document.getElementById('modalCloseBtn')?.addEventListener('click', closeFleetModal);
+  document.getElementById('modalBackBtn')?.addEventListener('click', openCategoryPicker);
   wireModalMiniForm(document.documentElement.lang === 'es' ? 'es' : 'en');
 
   overlay.setAttribute('aria-hidden', 'false');
@@ -576,6 +594,64 @@ function closeFleetModal() {
   overlay.classList.remove('is-open');
   overlay.setAttribute('aria-hidden', 'true');
   document.body.style.overflow = '';
+  cameFromPicker = false;
+}
+
+/* ---------- Category picker (Reserve Now) ---------- */
+function buildCategoryPickerContent() {
+  const lang   = document.documentElement.lang === 'es' ? 'es' : 'en';
+  const isEs   = lang === 'es';
+  const titleLbl = isEs ? 'Reservar' : 'Reserve Now';
+  const subLbl   = isEs ? 'Elige el tipo de vehículo' : 'Choose a vehicle type';
+  const order  = ['sedan', 'suv', 'minivan', 'luxury'];
+
+  const cards = order.map(cat => {
+    const d      = FLEET_DATA[cat];
+    if (!d) return '';
+    const labels = d[lang];
+    const photo  = d.cars[0].photo;
+    return `
+      <button type="button" class="category-picker-card" data-cat="${cat}">
+        <div class="cpc-photo"><img src="${photo}" alt="${labels.title}" loading="lazy" /></div>
+        <div class="cpc-body">
+          <span class="cpc-name">${labels.title}</span>
+          <span class="cpc-count">${labels.avail}</span>
+        </div>
+      </button>`;
+  }).join('');
+
+  return `
+    <div class="fleet-modal-header">
+      <div class="fmh-left">
+        <h3 class="modal-title" id="fleetModalTitle">${titleLbl}</h3>
+        <p class="modal-avail">${subLbl}</p>
+      </div>
+      <button class="modal-close-btn" id="modalCloseBtn" aria-label="${isEs ? 'Cerrar' : 'Close'}">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
+        </svg>
+      </button>
+    </div>
+    <div class="category-picker-grid">${cards}</div>`;
+}
+
+function openCategoryPicker() {
+  const overlay = document.getElementById('fleetModalOverlay');
+  const content = document.getElementById('fleetModalContent');
+  if (!overlay || !content) return;
+
+  content.innerHTML = buildCategoryPickerContent();
+  document.getElementById('modalCloseBtn')?.addEventListener('click', closeFleetModal);
+  document.querySelectorAll('.category-picker-card').forEach(card => {
+    card.addEventListener('click', () => {
+      cameFromPicker = true;
+      openFleetModal(card.dataset.cat);
+    });
+  });
+
+  overlay.setAttribute('aria-hidden', 'false');
+  overlay.classList.add('is-open');
+  document.body.style.overflow = 'hidden';
 }
 
 /* ---------- Mini-form WhatsApp message ---------- */
@@ -660,7 +736,10 @@ function wireModalMiniForm(lang) {
 
 function wireFleetModal() {
   document.querySelectorAll('.fleet-card[data-modal]').forEach(card => {
-    card.addEventListener('click', () => openFleetModal(card.dataset.modal));
+    card.addEventListener('click', () => {
+      cameFromPicker = false;
+      openFleetModal(card.dataset.modal);
+    });
   });
 
   const overlay = document.getElementById('fleetModalOverlay');
@@ -884,6 +963,7 @@ document.addEventListener('DOMContentLoaded', () => {
   wireHamburger();
   setDateDefaults();
   wireFleetModal();
+  document.getElementById('reserveNowBtn')?.addEventListener('click', openCategoryPicker);
   wireFormSubmit();
   wireToastClose();
   wireScrollSpy();
