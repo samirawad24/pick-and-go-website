@@ -162,20 +162,15 @@ h3 { font-size: 1.15rem; font-weight: 700; line-height: 1.3; }
   font-size: 1.4rem;
   flex-shrink: 0;
 }
-.brand-img-wrap { align-items: center; }
+.brand-img-wrap { align-items: center; gap: 0.5rem; }
 .brand-logo-img {
-  height: 48px;
+  height: 42px;
   width: auto;
   display: block;
   object-fit: contain;
+  flex-shrink: 0;
 }
-@media (max-width: 600px) { .brand-logo-img { height: 38px; } }
-.footer-logo-img {
-  height: 72px;
-  width: auto;
-  display: block;
-  object-fit: contain;
-}
+@media (max-width: 600px) { .brand-logo-img { height: 34px; } }
 .brand-pick, .brand-go { color: var(--white); }
 .brand-amp { color: var(--orange); margin: 0 0.05em; }
 .brand-tag {
