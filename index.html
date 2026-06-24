@@ -204,6 +204,7 @@
               <option value="Compact / Sedan" data-i18n="form.catSedan">Compact / Sedan</option>
               <option value="SUV" data-i18n="form.catSUV">SUV</option>
               <option value="XL Vehicle" data-i18n="form.catMinivan">XL Vehicle (up to 8 seats)</option>
+              <option value="Luxury" data-i18n="form.catLuxury">Luxury (Escalade / Suburban)</option>
               <option value="No preference" data-i18n="form.catAny">No preference &mdash; recommend one</option>
             </select>
           </div>
@@ -220,7 +221,27 @@
 
           <div class="form-field">
             <label for="pickup_time" data-i18n="form.pickupTime">Pickup time</label>
-            <input type="time" id="pickup_time" name="pickup_time" required />
+            <select id="pickup_time" name="pickup_time" required>
+              <option value="" disabled selected>Select a time&hellip;</option>
+              <option value="6:00 AM">6:00 AM</option>
+              <option value="7:00 AM">7:00 AM</option>
+              <option value="8:00 AM">8:00 AM</option>
+              <option value="9:00 AM">9:00 AM</option>
+              <option value="10:00 AM">10:00 AM</option>
+              <option value="11:00 AM">11:00 AM</option>
+              <option value="12:00 PM">12:00 PM (Noon)</option>
+              <option value="1:00 PM">1:00 PM</option>
+              <option value="2:00 PM">2:00 PM</option>
+              <option value="3:00 PM">3:00 PM</option>
+              <option value="4:00 PM">4:00 PM</option>
+              <option value="5:00 PM">5:00 PM</option>
+              <option value="6:00 PM">6:00 PM</option>
+              <option value="7:00 PM">7:00 PM</option>
+              <option value="8:00 PM">8:00 PM</option>
+              <option value="9:00 PM">9:00 PM</option>
+              <option value="10:00 PM">10:00 PM</option>
+              <option value="11:00 PM">11:00 PM</option>
+            </select>
           </div>
 
           <div class="form-field form-field-full">
@@ -277,7 +298,6 @@
               <h3 data-i18n="fleet.sedan.name">Compact / Sedan</h3>
               <span class="fleet-count">1 vehicle</span>
             </div>
-            <div class="fleet-price">From <strong>$45</strong>/day</div>
             <p data-i18n="fleet.sedan.desc">Ideal for solo travelers and city driving. Fuel-efficient, easy to park, and comfortable.</p>
             <ul class="fleet-list">
               <li>Kia Forte</li>
@@ -301,7 +321,6 @@
               <h3 data-i18n="fleet.suv.name">SUV</h3>
               <span class="fleet-count">4 vehicles</span>
             </div>
-            <div class="fleet-price">From <strong>$65</strong>/day</div>
             <p data-i18n="fleet.suv.desc">Spacious, comfortable, and versatile. Built for families, groups, and every kind of Florida adventure.</p>
             <ul class="fleet-list">
               <li>Toyota RAV4</li>
@@ -316,7 +335,7 @@
           <div class="fleet-image">
             <img
               src="https://images.unsplash.com/photo-1737488247093-f4484eac67ae?w=600&q=80&auto=format&fit=crop"
-              alt="XL Vehicles — Honda Odyssey, Toyota Sienna, Chrysler Pacifica, Cadillac Escalade, Chevrolet Suburban"
+              alt="XL Vehicles — Honda Odyssey, Toyota Sienna, Chrysler Pacifica"
               loading="lazy"
               width="600" height="400"
             />
@@ -324,14 +343,35 @@
           <div class="fleet-card-body">
             <div class="fleet-card-top">
               <h3 data-i18n="fleet.minivan.name">XL Vehicles</h3>
-              <span class="fleet-count">5 vehicles</span>
+              <span class="fleet-count">3 vehicles</span>
             </div>
-            <div class="fleet-price">From <strong>$89</strong>/day</div>
-            <p data-i18n="fleet.minivan.desc">The biggest vehicles in our fleet — perfect for large groups, families, and special occasions. From spacious minivans to full-size luxury SUVs, all seating up to 8 passengers.</p>
+            <p data-i18n="fleet.minivan.desc">Spacious minivans perfect for large families, group travel, and everything in between. All seat up to 8 passengers with plenty of room for luggage.</p>
             <ul class="fleet-list">
               <li>Honda Odyssey</li>
               <li>Toyota Sienna</li>
               <li>Chrysler Pacifica</li>
+            </ul>
+            <button type="button" class="btn btn-secondary fleet-modal-btn" data-i18n="fleet.cta">View Available Cars</button>
+          </div>
+        </article>
+
+        <!-- Luxury -->
+        <article class="fleet-card" data-modal="luxury">
+          <div class="fleet-image">
+            <img
+              src="https://images.unsplash.com/photo-1683778547049-8d969766b441?w=600&q=80&auto=format&fit=crop"
+              alt="Luxury — Cadillac Escalade, Chevrolet Suburban"
+              loading="lazy"
+              width="600" height="400"
+            />
+          </div>
+          <div class="fleet-card-body">
+            <div class="fleet-card-top">
+              <h3 data-i18n="fleet.luxury.name">Luxury</h3>
+              <span class="fleet-count">2 vehicles</span>
+            </div>
+            <p data-i18n="fleet.luxury.desc">Travel in style. Our premium full-size SUVs are perfect for VIP arrivals, special occasions, and groups who want the best.</p>
+            <ul class="fleet-list">
               <li>Cadillac Escalade</li>
               <li>Chevrolet Suburban</li>
             </ul>
@@ -473,11 +513,11 @@
       <div class="faq-list">
         <details class="faq-item">
           <summary data-i18n="faq.q1">What are the requirements to rent a car?</summary>
-          <div data-i18n="faq.a1">Driver must be 25 or older with a valid driver's license (any country, Latin alphabet) and a major credit card in their own name. We may request a refundable security deposit at pickup.</div>
+          <div data-i18n="faq.a1">Driver must be 21 or older with a valid driver's license (any country, Latin alphabet) and a major credit card in their own name. We may request a refundable security deposit at pickup.</div>
         </details>
         <details class="faq-item">
           <summary data-i18n="faq.q2">Is insurance included?</summary>
-          <div data-i18n="faq.a2">Yes — basic collision and third-party coverage are included on every rental. Additional protection options can be added on request.</div>
+          <div data-i18n="faq.a2">Yes, every rental comes with full collision and liability insurance.</div>
         </details>
         <details class="faq-item">
           <summary data-i18n="faq.q3">Where can I pick up the car?</summary>
@@ -488,8 +528,8 @@
           <div data-i18n="faq.a4">We accept all major credit cards. The card must be in the primary driver's name. A refundable security deposit is held at pickup and released after the car is returned.</div>
         </details>
         <details class="faq-item">
-          <summary data-i18n="faq.q5">Can I cancel or change my reservation?</summary>
-          <div data-i18n="faq.a5">Yes. Free changes/cancellations up to 24 hours before pickup. Within 24 hours, a small fee may apply. Just message us on WhatsApp — fastest way to update your booking.</div>
+          <summary data-i18n="faq.q5">Can I change my reservation?</summary>
+          <div data-i18n="faq.a5">Yes — you can change your reservation to a different date at any time. The amount paid stays on your account as credit toward your rescheduled rental. Please note all reservations are non-refundable. Just let us know at least 2 days before your original pickup date and we will take care of it.</div>
         </details>
         <details class="faq-item">
           <summary data-i18n="faq.q6">Are there any hidden fees?</summary>
