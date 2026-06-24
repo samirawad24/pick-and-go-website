@@ -67,8 +67,9 @@ Go to **business.google.com** → "Add your business."
 
 ## 🟠 STEP 3 — Reviews (ongoing)
 
-You have 4 Google reviews at 5.0. Aim for **10+**. After every drop-off, send the customer your
-Google review link via WhatsApp. More reviews = stronger brand ranking + Maps visibility.
+You have **21 Google reviews at 5.0** — excellent. Keep the momentum: aim for **30+**. After every
+drop-off, send the customer your Google review link via WhatsApp. More reviews = stronger brand
+ranking + Maps visibility.
 
 Suggested WhatsApp message (Spanish):
 > *¡Gracias por rentar con Pick & Go! 🙏 Si te gustó el servicio, ¿nos dejarías una reseña en
