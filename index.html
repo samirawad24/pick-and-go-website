@@ -324,6 +324,9 @@
     <div class="container">
       <h2 data-i18n="form.title">Reserve your car</h2>
       <p class="section-sub" data-i18n="form.subtitle">Tell us where, when, and what you need. We'll reply on WhatsApp within minutes.</p>
+      <p class="form-skip-wa">
+        <a href="https://wa.me/17542653882?text=Hola%20Pick%20%26%20Go%20%E2%80%94%20quisiera%20rentar%20un%20auto." target="_blank" rel="noopener" data-i18n="form.skipWa">Prefer to chat directly? Message us on WhatsApp →</a>
+      </p>
 
       <form
         class="reserve-form"
@@ -422,8 +425,8 @@
           </div>
 
           <div class="form-field">
-            <label for="email" data-i18n="form.email">Email</label>
-            <input type="email" id="email" name="email" required autocomplete="email" />
+            <label for="email" data-i18n="form.email">Email <span class="optional" data-i18n="form.optional">(optional)</span></label>
+            <input type="email" id="email" name="email" autocomplete="email" />
           </div>
 
           <div class="form-field form-field-full">
@@ -432,6 +435,10 @@
           </div>
         </div>
 
+        <div class="form-trust-row">
+          <span class="form-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
+          <span data-i18n="form.trustLine">5.0 on Google &middot; Usually replies in under 5 minutes</span>
+        </div>
         <button type="submit" class="btn btn-primary btn-large btn-submit" id="form-submit">
           <span data-i18n="form.submit">Get My Quote</span>
           <span class="btn-arrow">&rarr;</span>
@@ -475,6 +482,7 @@
 
         <!-- SUV (featured / most popular) -->
         <article class="fleet-card fleet-card-feature" data-modal="suv">
+          <div class="fleet-popular-badge" data-i18n="fleet.popular">Most Popular</div>
           <div class="fleet-image">
             <img
               src="https://images.unsplash.com/photo-1617469767053-d3b523a0b982?w=600&q=80&auto=format&fit=crop"

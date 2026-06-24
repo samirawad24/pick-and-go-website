@@ -134,6 +134,8 @@ const I18N = {
     'form.optional':   '(optional)',
     'form.submit':     'Get My Quote',
     'form.note':       'No commitment · Instant reply via WhatsApp',
+    'form.skipWa':     'Prefer to chat directly? Message us on WhatsApp →',
+    'form.trustLine':  '5.0 on Google · Usually replies in under 5 minutes',
 
     'fleet.title':        'Our Fleet',
     'fleet.subtitle':     'Pick the size that fits your trip.',
@@ -146,6 +148,7 @@ const I18N = {
     'fleet.luxury.name':   'Luxury',
     'fleet.luxury.desc':   'Travel in style. Our premium full-size SUVs are perfect for VIP arrivals, special occasions, and groups who want the best.',
     'fleet.cta':           'View Available Cars',
+    'fleet.popular':       'Most Popular',
 
     'reviews.title':    'What our customers say',
     'reviews.subtitle': 'Real experiences from real renters in South Florida.',
@@ -247,6 +250,8 @@ const I18N = {
     'form.optional':   '(opcional)',
     'form.submit':     'Solicitar cotización',
     'form.note':       'Sin compromiso · Respuesta inmediata por WhatsApp',
+    'form.skipWa':     '¿Prefieres hablar directo? Escríbenos por WhatsApp →',
+    'form.trustLine':  '5.0 en Google · Respondemos en menos de 5 minutos',
 
     'fleet.title':        'Nuestra Flota',
     'fleet.subtitle':     'Elige el tamaño ideal para tu viaje.',
@@ -259,6 +264,7 @@ const I18N = {
     'fleet.luxury.name':   'Lujo',
     'fleet.luxury.desc':   'Viaja con estilo. Nuestras SUVs premium de gran tamaño son perfectas para llegadas VIP, ocasiones especiales y grupos que buscan lo mejor.',
     'fleet.cta':           'Ver autos disponibles',
+    'fleet.popular':       'Más Popular',
 
     'reviews.title':    'Lo que dicen nuestros clientes',
     'reviews.subtitle': 'Experiencias reales de clientes en el Sur de Florida.',
@@ -842,11 +848,15 @@ function wireFaqAnimation() {
 
 /* ---------- Init ---------- */
 document.addEventListener('DOMContentLoaded', () => {
-  // Restore saved language
+  // Restore saved language, or auto-detect from browser
   let lang = 'en';
   try {
     const saved = localStorage.getItem('pg-lang');
-    if (saved && I18N[saved]) lang = saved;
+    if (saved && I18N[saved]) {
+      lang = saved;
+    } else if (navigator.language && navigator.language.toLowerCase().startsWith('es')) {
+      lang = 'es';
+    }
   } catch (e) {}
   applyLanguage(lang);
 

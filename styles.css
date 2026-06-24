@@ -530,6 +530,33 @@ h3 { font-size: 1.15rem; font-weight: 700; line-height: 1.3; }
   justify-content: center;
 }
 
+.form-skip-wa {
+  text-align: center;
+  margin: -0.5rem 0 1.5rem;
+  font-size: 0.9rem;
+}
+.form-skip-wa a {
+  color: #25D366;
+  font-weight: 600;
+  text-decoration: none;
+}
+.form-skip-wa a:hover { text-decoration: underline; }
+
+.form-trust-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  margin-bottom: 0.875rem;
+  font-size: 0.875rem;
+  color: var(--text-light);
+}
+.form-trust-row .form-stars {
+  color: #F5A623;
+  letter-spacing: 1px;
+  font-size: 0.95rem;
+}
+
 .form-note {
   text-align: center;
   margin-top: 1rem;
@@ -568,8 +595,7 @@ h3 { font-size: 1.15rem; font-weight: 700; line-height: 1.3; }
   border-color: var(--orange);
   position: relative;
 }
-.fleet-card-feature::before {
-  content: "MOST POPULAR";
+.fleet-popular-badge {
   position: absolute;
   top: 12px;
   left: 50%;
@@ -583,6 +609,7 @@ h3 { font-size: 1.15rem; font-weight: 700; line-height: 1.3; }
   border-radius: 999px;
   z-index: 2;
   white-space: nowrap;
+  text-transform: uppercase;
 }
 
 .fleet-image {
