@@ -336,6 +336,12 @@ function applyLanguage(lang) {
   document.querySelectorAll('.lang-btn').forEach(btn => {
     btn.classList.toggle('is-active', btn.dataset.lang === lang);
   });
+  const waMsg = lang === 'es'
+    ? 'Hola%20Pick%20%26%20Go%20%E2%80%94%20quisiera%20rentar%20un%20auto.'
+    : 'Hi%20Pick%20%26%20Go%20%E2%80%94%20I%27d%20like%20to%20rent%20a%20car.';
+  document.querySelectorAll('a[href*="wa.me/17542653882"]').forEach(a => {
+    a.href = 'https://wa.me/17542653882?text=' + waMsg;
+  });
   try { localStorage.setItem('pg-lang', lang); } catch (e) {}
 }
 
