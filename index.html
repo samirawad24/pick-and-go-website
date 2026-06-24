@@ -1,0 +1,585 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pick &amp; Go Rent A Car — South Florida Rentals (MIA &amp; FLL)</title>
+  <meta name="description" content="Premium car rentals in South Florida. Pickup at MIA, FLL, ports, or your hotel. Book in 60 seconds via WhatsApp. No hidden fees. Insurance included." />
+
+  <!-- Open Graph / Meta Ads -->
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Pick &amp; Go Rent A Car" />
+  <meta property="og:title" content="Pick &amp; Go Rent A Car — South Florida's Best Rental" />
+  <meta property="og:description" content="Premium rental cars in Miami &amp; Fort Lauderdale. Meet you at the airport. No hidden fees. Book via WhatsApp in 60 seconds." />
+  <meta property="og:image" content="https://images.unsplash.com/photo-1617170708704-3189ba27e822?w=1200&q=80&auto=format&fit=crop" />
+  <meta property="og:url" content="https://pickandgorentacar.netlify.app/" />
+  <meta name="twitter:card" content="summary_large_image" />
+
+  <!-- =====================================================
+    META PIXEL — Paste your Pixel ID here before launching ads
+    Replace YOUR_PIXEL_ID with the number from Meta Events Manager
+    =====================================================
+  <script>
+    !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
+    n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,
+    document,'script','https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', 'YOUR_PIXEL_ID');
+    fbq('track', 'PageView');
+  </script>
+  <noscript><img height="1" width="1" style="display:none"
+    src="https://www.facebook.com/tr?id=YOUR_PIXEL_ID&ev=PageView&noscript=1"/></noscript>
+  -->
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <!-- ============ HEADER ============ -->
+  <header class="site-header" id="site-header">
+    <div class="container header-inner">
+      <a href="#top" class="brand">
+        <span class="brand-pick">PICK</span><span class="brand-amp">&amp;</span><span class="brand-go">GO</span>
+        <span class="brand-tag">RENT A CAR</span>
+      </a>
+      <nav class="header-nav" aria-label="Primary">
+        <a href="#reserve" data-i18n="nav.reserve">Reserve</a>
+        <a href="#fleet" data-i18n="nav.fleet">Fleet</a>
+        <a href="#reviews" data-i18n="nav.reviews">Reviews</a>
+        <a href="#why" data-i18n="nav.why">Why Us</a>
+        <a href="#faq" data-i18n="nav.faq">FAQ</a>
+      </nav>
+      <div class="header-right">
+        <a class="btn-ig-header"
+           href="https://instagram.com/pickandgo_rentacar"
+           target="_blank" rel="noopener" aria-label="Instagram @pickandgo_rentacar">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5" stroke-width="3"/></svg>
+        </a>
+        <a class="btn btn-wa-header"
+           href="https://wa.me/17542653882?text=Hi%20Pick%20%26%20Go%20%E2%80%94%20I%27d%20like%20to%20rent%20a%20car."
+           target="_blank" rel="noopener" data-i18n="nav.whatsapp">
+          WhatsApp
+        </a>
+        <div class="lang-switch" role="group" aria-label="Language">
+          <button type="button" class="lang-btn is-active" data-lang="en">EN</button>
+          <button type="button" class="lang-btn" data-lang="es">ES</button>
+        </div>
+        <button class="nav-toggle" id="nav-toggle" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-nav">
+          <span class="hamburger-bar"></span>
+          <span class="hamburger-bar"></span>
+          <span class="hamburger-bar"></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- ============ STICKY DESKTOP BOOK BAR ============ -->
+  <div class="sticky-book-bar" id="stickyBookBar">
+    <span class="sticky-tagline">South Florida's fastest car rental — meet you at the airport</span>
+    <a href="https://wa.me/17542653882?text=Hi%20Pick%20%26%20Go%20%E2%80%94%20I%27d%20like%20to%20rent%20a%20car."
+       class="btn-sticky-wa" target="_blank" rel="noopener">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+      Book on WhatsApp
+    </a>
+  </div>
+
+  <!-- ============ MOBILE NAV DRAWER ============ -->
+  <div class="mobile-nav" id="mobile-nav" aria-hidden="true">
+    <nav class="mobile-nav-links">
+      <a href="#reserve" data-i18n="nav.reserve">Reserve</a>
+      <a href="#fleet" data-i18n="nav.fleet">Fleet</a>
+      <a href="#reviews" data-i18n="nav.reviews">Reviews</a>
+      <a href="#why" data-i18n="nav.why">Why Us</a>
+      <a href="#faq" data-i18n="nav.faq">FAQ</a>
+    </nav>
+    <a class="btn btn-primary btn-wa-mobile"
+       href="https://wa.me/17542653882?text=Hi%20Pick%20%26%20Go%20%E2%80%94%20I%27d%20like%20to%20rent%20a%20car."
+       target="_blank" rel="noopener" data-i18n="mobile.ctaDrawer">
+      Chat on WhatsApp: 754-265-3882
+    </a>
+  </div>
+
+  <!-- ============ HERO ============ -->
+  <section id="top" class="hero">
+    <div class="hero-bg" aria-hidden="true"></div>
+    <div class="hero-overlay" aria-hidden="true"></div>
+    <div class="container hero-inner">
+      <div class="hero-text">
+        <span class="eyebrow" data-i18n="hero.eyebrow">South Florida · MIA &amp; FLL · Ports · Hotel Delivery</span>
+        <h1 data-i18n="hero.title">Pick a car.<br/>Go anywhere.</h1>
+        <p data-i18n="hero.subtitle">Premium rental cars in Miami &amp; Fort Lauderdale. Reserve in 60 seconds. Instant reply via WhatsApp.</p>
+        <div class="hero-urgency">&#9889; High demand — only a few vehicles left this week</div>
+        <div class="hero-cta-group">
+          <a href="https://wa.me/17542653882?text=Hi%20Pick%20%26%20Go%20%E2%80%94%20I%27d%20like%20to%20rent%20a%20car."
+             class="btn btn-wa-hero" target="_blank" rel="noopener" data-i18n="hero.ctaWa">
+            <svg class="wa-icon" width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+            Chat on WhatsApp
+          </a>
+          <a href="#reserve" class="btn btn-outline-white" data-i18n="hero.ctaForm">Get a Quote &rarr;</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Trust bar -->
+    <div class="trust-bar">
+      <div class="container trust-inner">
+        <div class="trust-item">
+          <span class="trust-stars" aria-hidden="true">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
+          <span data-i18n="trust.rating">5-star rated · <span data-count="100" class="count-up">100+</span> happy renters</span>
+        </div>
+        <div class="trust-divider" aria-hidden="true"></div>
+        <div class="trust-item">
+          <span class="trust-airport">
+            <span class="airport-badge">MIA</span>
+            <span class="airport-badge">FLL</span>
+          </span>
+          <span>Airport pickup</span>
+        </div>
+        <div class="trust-divider" aria-hidden="true"></div>
+        <div class="trust-item">
+          <span class="trust-check" aria-hidden="true">&#10003;</span>
+          <span data-i18n="trust.fees">No hidden fees</span>
+        </div>
+        <div class="trust-divider" aria-hidden="true"></div>
+        <div class="trust-item">
+          <span class="trust-check" aria-hidden="true">&#9889;</span>
+          <span data-i18n="trust.booking">Book in 60 seconds</span>
+        </div>
+        <div class="trust-divider" aria-hidden="true"></div>
+        <div class="trust-item">
+          <span class="trust-check" aria-hidden="true">&#128737;</span>
+          <span data-i18n="trust.insurance">Insurance included</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ INQUIRY FORM ============ -->
+  <section id="reserve" class="reserve">
+    <div class="container">
+      <h2 data-i18n="form.title">Reserve your car</h2>
+      <p class="section-sub" data-i18n="form.subtitle">Tell us where, when, and what you need. We'll reply on WhatsApp within minutes.</p>
+
+      <form
+        class="reserve-form"
+        name="pickandgo-inquiry"
+        method="POST"
+        data-netlify="true"
+        netlify-honeypot="bot-field"
+      >
+        <input type="hidden" name="form-name" value="pickandgo-inquiry" />
+        <p class="hp"><label>Don't fill this out: <input name="bot-field" /></label></p>
+
+        <div class="form-grid">
+          <div class="form-field">
+            <label for="pickup_location" data-i18n="form.pickupLoc">Pickup location</label>
+            <select id="pickup_location" name="pickup_location" required>
+              <option value="Miami International (MIA)" data-i18n="form.locMIA">Miami International (MIA)</option>
+              <option value="Fort Lauderdale (FLL)" data-i18n="form.locFLL">Fort Lauderdale (FLL)</option>
+              <option value="Port of Miami" data-i18n="form.locPortMia">Port of Miami</option>
+              <option value="Port of Fort Lauderdale" data-i18n="form.locPortFll">Port of Fort Lauderdale</option>
+              <option value="Hotel / Residence" data-i18n="form.locHotel">Hotel / Residence</option>
+            </select>
+          </div>
+
+          <div class="form-field">
+            <label for="return_location" data-i18n="form.returnLoc">Return location</label>
+            <select id="return_location" name="return_location" required>
+              <option value="Miami International (MIA)" data-i18n="form.locMIA">Miami International (MIA)</option>
+              <option value="Fort Lauderdale (FLL)" data-i18n="form.locFLL">Fort Lauderdale (FLL)</option>
+              <option value="Port of Miami" data-i18n="form.locPortMia">Port of Miami</option>
+              <option value="Port of Fort Lauderdale" data-i18n="form.locPortFll">Port of Fort Lauderdale</option>
+              <option value="Hotel / Residence" data-i18n="form.locHotel">Hotel / Residence</option>
+            </select>
+          </div>
+
+          <div class="form-field">
+            <label for="vehicle_type" data-i18n="form.vehicle">Vehicle type</label>
+            <select id="vehicle_type" name="vehicle_type" required>
+              <option value="" data-i18n="form.choose">Choose&hellip;</option>
+              <option value="Compact / Sedan" data-i18n="form.catSedan">Compact / Sedan</option>
+              <option value="SUV" data-i18n="form.catSUV">SUV</option>
+              <option value="XL Vehicle" data-i18n="form.catMinivan">XL Vehicle (up to 8 seats)</option>
+              <option value="No preference" data-i18n="form.catAny">No preference &mdash; recommend one</option>
+            </select>
+          </div>
+
+          <div class="form-field">
+            <label for="pickup_date" data-i18n="form.pickupDate">Pickup date</label>
+            <input type="date" id="pickup_date" name="pickup_date" required />
+          </div>
+
+          <div class="form-field">
+            <label for="return_date" data-i18n="form.returnDate">Return date</label>
+            <input type="date" id="return_date" name="return_date" required />
+          </div>
+
+          <div class="form-field">
+            <label for="pickup_time" data-i18n="form.pickupTime">Pickup time</label>
+            <input type="time" id="pickup_time" name="pickup_time" required />
+          </div>
+
+          <div class="form-field form-field-full">
+            <label for="full_name" data-i18n="form.name">Full name</label>
+            <input type="text" id="full_name" name="full_name" required autocomplete="name" />
+          </div>
+
+          <div class="form-field">
+            <label for="phone" data-i18n="form.phone">Phone</label>
+            <input type="tel" id="phone" name="phone" required autocomplete="tel" placeholder="+1 ..." />
+          </div>
+
+          <div class="form-field">
+            <label for="email" data-i18n="form.email">Email</label>
+            <input type="email" id="email" name="email" required autocomplete="email" />
+          </div>
+
+          <div class="form-field form-field-full">
+            <label for="notes" data-i18n="form.notes">Anything else? <span class="optional" data-i18n="form.optional">(optional)</span></label>
+            <textarea id="notes" name="notes" rows="3" placeholder=""></textarea>
+          </div>
+        </div>
+
+        <button type="submit" class="btn btn-primary btn-large btn-submit" id="form-submit">
+          <span data-i18n="form.submit">Get My Quote</span>
+          <span class="btn-arrow">&rarr;</span>
+        </button>
+        <p class="form-note" data-i18n="form.note">No commitment &middot; Instant reply via WhatsApp</p>
+        <div class="form-confirm">&#10003; We'll message you on WhatsApp within 5 minutes</div>
+      </form>
+    </div>
+  </section>
+
+  <!-- ============ FLEET ============ -->
+  <section id="fleet" class="fleet">
+    <div class="container">
+      <h2 data-i18n="fleet.title">Our Fleet</h2>
+      <p class="section-sub" data-i18n="fleet.subtitle">Pick the size that fits your trip.</p>
+
+      <div class="fleet-grid">
+
+        <!-- Compact / Sedan -->
+        <article class="fleet-card" data-modal="sedan">
+          <div class="fleet-image">
+            <img
+              src="https://images.unsplash.com/photo-1623869675781-80aa31012a5a?w=600&q=80&auto=format&fit=crop"
+              alt="Compact Sedan — Kia Forte"
+              loading="lazy"
+              width="600" height="400"
+            />
+          </div>
+          <div class="fleet-card-body">
+            <div class="fleet-card-top">
+              <h3 data-i18n="fleet.sedan.name">Compact / Sedan</h3>
+              <span class="fleet-count">1 vehicle</span>
+            </div>
+            <div class="fleet-price">From <strong>$45</strong>/day</div>
+            <p data-i18n="fleet.sedan.desc">Ideal for solo travelers and city driving. Fuel-efficient, easy to park, and comfortable.</p>
+            <ul class="fleet-list">
+              <li>Kia Forte</li>
+            </ul>
+            <button type="button" class="btn btn-secondary fleet-modal-btn" data-i18n="fleet.cta">View Available Cars</button>
+          </div>
+        </article>
+
+        <!-- SUV (featured / most popular) -->
+        <article class="fleet-card fleet-card-feature" data-modal="suv">
+          <div class="fleet-image">
+            <img
+              src="https://images.unsplash.com/photo-1617469767053-d3b523a0b982?w=600&q=80&auto=format&fit=crop"
+              alt="SUV — Toyota RAV4, Volkswagen T-Roc"
+              loading="lazy"
+              width="600" height="400"
+            />
+          </div>
+          <div class="fleet-card-body">
+            <div class="fleet-card-top">
+              <h3 data-i18n="fleet.suv.name">SUV</h3>
+              <span class="fleet-count">4 vehicles</span>
+            </div>
+            <div class="fleet-price">From <strong>$65</strong>/day</div>
+            <p data-i18n="fleet.suv.desc">Spacious, comfortable, and versatile. Built for families, groups, and every kind of Florida adventure.</p>
+            <ul class="fleet-list">
+              <li>Toyota RAV4</li>
+              <li>Volkswagen Tiguan (×3)</li>
+            </ul>
+            <button type="button" class="btn btn-secondary fleet-modal-btn" data-i18n="fleet.cta">View Available Cars</button>
+          </div>
+        </article>
+
+        <!-- Minivan -->
+        <article class="fleet-card" data-modal="minivan">
+          <div class="fleet-image">
+            <img
+              src="https://images.unsplash.com/photo-1737488247093-f4484eac67ae?w=600&q=80&auto=format&fit=crop"
+              alt="XL Vehicles — Honda Odyssey, Toyota Sienna, Chrysler Pacifica, Cadillac Escalade, Chevrolet Suburban"
+              loading="lazy"
+              width="600" height="400"
+            />
+          </div>
+          <div class="fleet-card-body">
+            <div class="fleet-card-top">
+              <h3 data-i18n="fleet.minivan.name">XL Vehicles</h3>
+              <span class="fleet-count">5 vehicles</span>
+            </div>
+            <div class="fleet-price">From <strong>$89</strong>/day</div>
+            <p data-i18n="fleet.minivan.desc">The biggest vehicles in our fleet — perfect for large groups, families, and special occasions. From spacious minivans to full-size luxury SUVs, all seating up to 8 passengers.</p>
+            <ul class="fleet-list">
+              <li>Honda Odyssey</li>
+              <li>Toyota Sienna</li>
+              <li>Chrysler Pacifica</li>
+              <li>Cadillac Escalade</li>
+              <li>Chevrolet Suburban</li>
+            </ul>
+            <button type="button" class="btn btn-secondary fleet-modal-btn" data-i18n="fleet.cta">View Available Cars</button>
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ TRUST CREDENTIALS ============ -->
+  <section class="credentials">
+    <div class="container credentials-inner">
+      <div class="cred-badge">
+        <span class="cred-icon">&#127758;</span>
+        <span>Florida Licensed<br/><small>State Registered</small></span>
+      </div>
+      <div class="cred-divider"></div>
+      <div class="cred-badge">
+        <span class="cred-icon">&#128737;</span>
+        <span>Fully Insured<br/><small>Every rental covered</small></span>
+      </div>
+      <div class="cred-divider"></div>
+      <div class="cred-badge">
+        <span class="cred-icon">&#9989;</span>
+        <span>No Hidden Fees<br/><small>Price is price you pay</small></span>
+      </div>
+      <div class="cred-divider"></div>
+      <div class="cred-badge">
+        <span class="cred-icon">&#11088;</span>
+        <span>100+ Happy Renters<br/><small>5-star rated on Google</small></span>
+      </div>
+      <div class="cred-divider"></div>
+      <div class="cred-badge">
+        <span class="cred-icon">&#128197;</span>
+        <span>Free Cancellation<br/><small>Up to 24 hrs before pickup</small></span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ REVIEWS ============ -->
+  <!-- Update these 4 reviews with real customer quotes as you collect them -->
+  <section id="reviews" class="reviews">
+    <div class="container">
+      <h2 data-i18n="reviews.title">What our customers say</h2>
+      <p class="section-sub" data-i18n="reviews.subtitle">Real experiences from real renters in South Florida.</p>
+      <div class="google-badge-wrap">
+        <a class="google-badge-pill"
+           href="https://www.google.com/search?sca_esv=e8b56c3c652e1040&sxsrf=ANbL-n7cTqkbdTKSvxShdJ5PpKPdV7AKxA:1780978365495&si=AL3DRZEsmMGCryMMFSHJ3StBhOdZ2-6yYkXd_doETEE1OR-qOT3UT9Q0zT21IhzlQjdLKtOHNw2s08PCSvA9-8YTrZeCY7npVMgBnilEBLt1qc9nxWIjI25SOd4G2Ju2xTfeKl1hIf8-HBP2LqLZi8vmkX7vtRdJcg%3D%3D&q=PICK+%26+GO+RENT+A+CAR+Reviews&sa=X&ved=2ahUKEwj6vs-2pfmUAxWbmYQIHRxTBYQQ0bkNegQIPBAF&biw=1920&bih=919&dpr=1"
+           target="_blank" rel="noopener" aria-label="See our Google Reviews">
+          <span class="google-badge-g">Google</span>
+          <span class="google-badge-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
+          <span>5.0 &middot; See Our Reviews</span>
+        </a>
+      </div>
+      <div class="reviews-grid">
+
+        <div class="review-card">
+          <div class="review-stars" aria-label="5 stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <p class="review-text" data-i18n="reviews.r1.text">"Rented a RAV4 for a full week in Miami — 7 days, airport to hotel and back. They met me right at MIA arrivals with the keys in hand, no wait, no shuttle. Car was spotless and brand new. Saved us at least $200 vs. the airport counters. Will definitely book again."</p>
+          <div class="review-author">
+            <div class="review-avatar" aria-hidden="true">C</div>
+            <div>
+              <strong data-i18n="reviews.r1.name">Carlos M.</strong>
+              <span data-i18n="reviews.r1.loc">Miami, FL &middot; Toyota RAV4 &middot; 7 days</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="review-card">
+          <div class="review-stars" aria-label="5 stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <p class="review-text" data-i18n="reviews.r2.text">"Best rental in South Florida, hands down. I messaged on WhatsApp at 10pm and got a reply in under 2 minutes. The Suburban fit all 6 of us plus luggage perfectly. No hidden fees — the price they quoted was the price we paid. Highly recommend for family trips."</p>
+          <div class="review-author">
+            <div class="review-avatar" aria-hidden="true">J</div>
+            <div>
+              <strong data-i18n="reviews.r2.name">Jennifer T.</strong>
+              <span data-i18n="reviews.r2.loc">Fort Lauderdale, FL &middot; Chevrolet Suburban &middot; Family of 6</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="review-card">
+          <div class="review-stars" aria-label="5 stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <p class="review-text" data-i18n="reviews.r3.text">"Booked via WhatsApp in under 2 minutes. Great price on the Tiguan for our road trip. Super professional and responsive. 10/10."</p>
+          <div class="review-author">
+            <div class="review-avatar" aria-hidden="true">M</div>
+            <div>
+              <strong data-i18n="reviews.r3.name">Mike R.</strong>
+              <span data-i18n="reviews.r3.loc">Atlanta, GA</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="review-card">
+          <div class="review-stars" aria-label="5 stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <p class="review-text" data-i18n="reviews.r4.text">"Renté la Odyssey para un viaje familiar. Precio justo, respuesta inmediata por WhatsApp y el auto estaba en perfectas condiciones. 100% recomendado."</p>
+          <div class="review-author">
+            <div class="review-avatar" aria-hidden="true">A</div>
+            <div>
+              <strong data-i18n="reviews.r4.name">Ana L.</strong>
+              <span data-i18n="reviews.r4.loc">Miami Beach, FL</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ WHY CHOOSE US ============ -->
+  <section id="why" class="why">
+    <div class="container">
+      <div class="why-split">
+        <div class="why-statement">
+          <p class="why-label" data-i18n="why.label">Why Pick &amp; Go</p>
+          <h2 data-i18n="why.heading">Renting a car in South Florida shouldn't feel like a chore.</h2>
+          <p class="why-body" data-i18n="why.body">We come to you, hand you the keys, and get out of your way. No counters, no wait rooms, no surprise charges at checkout.</p>
+        </div>
+        <ul class="why-list" aria-label="Our advantages">
+          <li data-i18n="why.l1">Airport, seaport &amp; hotel delivery</li>
+          <li data-i18n="why.l2">No hidden fees — ever</li>
+          <li data-i18n="why.l3">Reserve via WhatsApp in 60 seconds</li>
+          <li data-i18n="why.l4">Insurance included on every rental</li>
+          <li data-i18n="why.l5">Skip the rental counter completely</li>
+          <li data-i18n="why.l6">Every car detailed before pickup</li>
+          <li data-i18n="why.l7">Local team — we know South Florida</li>
+          <li data-i18n="why.l8">Available 7 days a week</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ FAQ ============ -->
+  <section id="faq" class="faq">
+    <div class="container">
+      <h2 data-i18n="faq.title">Frequently Asked Questions</h2>
+      <p class="section-sub" data-i18n="faq.subtitle">Quick answers to common questions. Still curious? WhatsApp us anytime.</p>
+      <div class="faq-list">
+        <details class="faq-item">
+          <summary data-i18n="faq.q1">What are the requirements to rent a car?</summary>
+          <div data-i18n="faq.a1">Driver must be 25 or older with a valid driver's license (any country, Latin alphabet) and a major credit card in their own name. We may request a refundable security deposit at pickup.</div>
+        </details>
+        <details class="faq-item">
+          <summary data-i18n="faq.q2">Is insurance included?</summary>
+          <div data-i18n="faq.a2">Yes — basic collision and third-party coverage are included on every rental. Additional protection options can be added on request.</div>
+        </details>
+        <details class="faq-item">
+          <summary data-i18n="faq.q3">Where can I pick up the car?</summary>
+          <div data-i18n="faq.a3">Miami International Airport (MIA), Fort Lauderdale Airport (FLL), Port of Miami, Port of Fort Lauderdale, or your hotel/residence. We meet you at arrivals — no shuttle, no walk, no wait.</div>
+        </details>
+        <details class="faq-item">
+          <summary data-i18n="faq.q4">How do I pay?</summary>
+          <div data-i18n="faq.a4">We accept all major credit cards. The card must be in the primary driver's name. A refundable security deposit is held at pickup and released after the car is returned.</div>
+        </details>
+        <details class="faq-item">
+          <summary data-i18n="faq.q5">Can I cancel or change my reservation?</summary>
+          <div data-i18n="faq.a5">Yes. Free changes/cancellations up to 24 hours before pickup. Within 24 hours, a small fee may apply. Just message us on WhatsApp — fastest way to update your booking.</div>
+        </details>
+        <details class="faq-item">
+          <summary data-i18n="faq.q6">Are there any hidden fees?</summary>
+          <div data-i18n="faq.a6">No. The quote we send you on WhatsApp includes all taxes, insurance, and airport fees. The price you see is the price you pay.</div>
+        </details>
+        <details class="faq-item">
+          <summary data-i18n="faq.q7">What if my flight is delayed?</summary>
+          <div data-i18n="faq.a7">We track your flight. Whether you land early or late, we'll be there. No extra charge for flight delays.</div>
+        </details>
+        <details class="faq-item">
+          <summary data-i18n="faq.q8">Do you offer long-term rentals?</summary>
+          <div data-i18n="faq.a8">Yes — weekly and monthly rates are available with a discount. Mention your dates in the inquiry form and we'll send a custom quote.</div>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ FOOTER ============ -->
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <div class="footer-brand">
+        <div class="footer-logo">
+          <span class="brand-pick">PICK</span><span class="brand-amp">&amp;</span><span class="brand-go">GO</span>
+        </div>
+        <p class="footer-tag">JUST DRIVE</p>
+        <p class="footer-desc" data-i18n="footer.desc">Premium rental cars for South Florida travelers.</p>
+      </div>
+      <div class="footer-cta">
+        <p data-i18n="footer.ready">Ready to ride?</p>
+        <a class="btn btn-primary"
+           href="https://wa.me/17542653882?text=Hi%20Pick%20%26%20Go%20%E2%80%94%20I%27d%20like%20to%20rent%20a%20car."
+           target="_blank" rel="noopener">
+          WhatsApp: 754-265-3882
+        </a>
+        <a class="btn btn-outline-footer"
+           href="mailto:pickandgorentacar@gmail.com?subject=Car%20Rental%20Inquiry">
+          Email a Quote Request
+        </a>
+      </div>
+      <div class="footer-contact">
+        <p><strong data-i18n="footer.contact">Contact</strong></p>
+        <p>&#128222; <a href="tel:+17542653882">754-265-3882</a></p>
+        <p>&#9993;&#65039; <a href="mailto:pickandgorentacar@gmail.com">pickandgorentacar@gmail.com</a></p>
+        <p>&#128205; Miami &middot; Fort Lauderdale, FL</p>
+      </div>
+    </div>
+    <div class="footer-bottom container">
+      <span>&copy; 2026 Pick &amp; Go Rent A Car &middot; <span data-i18n="footer.rights">All rights reserved.</span></span>
+    </div>
+  </footer>
+
+  <!-- ============ SUCCESS TOAST ============ -->
+  <div id="toast" class="toast" role="alert" aria-live="polite" aria-atomic="true">
+    <svg class="toast-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+    <span id="toast-text"></span>
+    <button class="toast-close" id="toast-close" aria-label="Dismiss">&times;</button>
+  </div>
+
+  <!-- ============ FLOATING INSTAGRAM ============ -->
+  <a id="floatingIg"
+     class="floating-ig"
+     href="https://instagram.com/pickandgo_rentacar"
+     target="_blank" rel="noopener" aria-label="Follow us on Instagram @pickandgo_rentacar">
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5" stroke-width="3"/></svg>
+  </a>
+
+  <!-- ============ FLOATING WHATSAPP ============ -->
+  <a id="floatingWa"
+     class="floating-wa"
+     href="https://wa.me/17542653882?text=Hi%20Pick%20%26%20Go%20%E2%80%94%20I%27d%20like%20to%20rent%20a%20car."
+     target="_blank" rel="noopener" aria-label="Chat on WhatsApp">
+    <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+  </a>
+
+  <!-- ============ MOBILE BOTTOM CTA BAR ============ -->
+  <div class="mobile-cta-bar">
+    <a href="https://wa.me/17542653882?text=Hi%20Pick%20%26%20Go%20%E2%80%94%20I%27d%20like%20to%20rent%20a%20car."
+       class="btn btn-wa-bar" target="_blank" rel="noopener" data-i18n="mobile.cta">
+      <svg class="wa-icon" width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+      Chat on WhatsApp &mdash; Book Now
+    </a>
+  </div>
+
+  <!-- ============ FLEET MODAL ============ -->
+  <div class="fleet-modal-overlay" id="fleetModalOverlay" aria-hidden="true">
+    <div class="fleet-modal" role="dialog" aria-modal="true" aria-labelledby="fleetModalTitle">
+      <div id="fleetModalContent"></div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
