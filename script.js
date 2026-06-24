@@ -105,7 +105,7 @@ const I18N = {
 
     'trust.rating':    '5-star rated · 100+ happy renters',
     'trust.fees':      'No hidden fees',
-    'trust.booking':   'Book in 60 seconds',
+    'trust.service':   'Available 24/7',
     'trust.insurance': 'Insurance included',
 
     'form.title':      'Reserve your car',
@@ -218,7 +218,7 @@ const I18N = {
 
     'trust.rating':    'Calificación 5 estrellas · 100+ clientes felices',
     'trust.fees':      'Sin cargos ocultos',
-    'trust.booking':   'Reserva en 60 segundos',
+    'trust.service':   'Disponibles 24/7',
     'trust.insurance': 'Seguro incluido',
 
     'form.title':      'Reserva tu auto',

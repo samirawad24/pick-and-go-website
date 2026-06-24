@@ -122,6 +122,29 @@
           <a href="#reserve" class="btn btn-outline-white" data-i18n="hero.ctaForm">Get a Quote &rarr;</a>
         </div>
       </div>
+
+      <div class="hero-features" aria-hidden="true">
+        <div class="hf-top">
+          <span class="hf-clock">&#9719;</span>
+          <div>
+            <div class="hf-available">Available 24 / 7</div>
+            <div class="hf-sub">Day, night &amp; holidays</div>
+          </div>
+        </div>
+        <div class="hf-divider"></div>
+        <ul class="hf-list">
+          <li>&#10003;&nbsp; Instant WhatsApp reply</li>
+          <li>&#10003;&nbsp; Airport, port &amp; hotel pickup</li>
+          <li>&#10003;&nbsp; Full insurance included</li>
+          <li>&#10003;&nbsp; No hidden fees — ever</li>
+          <li>&#10003;&nbsp; Every car cleaned &amp; detailed</li>
+          <li>&#10003;&nbsp; Flight tracking — we wait for you</li>
+        </ul>
+        <a href="https://wa.me/17542653882?text=Hi%20Pick%20%26%20Go%20%E2%80%94%20I%27d%20like%20to%20rent%20a%20car."
+           class="hf-cta" target="_blank" rel="noopener">
+          Book Now &rarr;
+        </a>
+      </div>
     </div>
 
     <!-- Trust bar -->
@@ -146,8 +169,8 @@
         </div>
         <div class="trust-divider" aria-hidden="true"></div>
         <div class="trust-item">
-          <span class="trust-check" aria-hidden="true">&#9889;</span>
-          <span data-i18n="trust.booking">Book in 60 seconds</span>
+          <span class="trust-check" aria-hidden="true">&#9719;</span>
+          <span data-i18n="trust.service">Available 24/7</span>
         </div>
         <div class="trust-divider" aria-hidden="true"></div>
         <div class="trust-item">
@@ -223,6 +246,12 @@
             <label for="pickup_time" data-i18n="form.pickupTime">Pickup time</label>
             <select id="pickup_time" name="pickup_time" required>
               <option value="" disabled selected>Select a time&hellip;</option>
+              <option value="12:00 AM">12:00 AM (Midnight)</option>
+              <option value="1:00 AM">1:00 AM</option>
+              <option value="2:00 AM">2:00 AM</option>
+              <option value="3:00 AM">3:00 AM</option>
+              <option value="4:00 AM">4:00 AM</option>
+              <option value="5:00 AM">5:00 AM</option>
               <option value="6:00 AM">6:00 AM</option>
               <option value="7:00 AM">7:00 AM</option>
               <option value="8:00 AM">8:00 AM</option>
