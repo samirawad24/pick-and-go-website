@@ -101,7 +101,7 @@ const I18N = {
     'nav.faq':      'FAQ',
     'nav.whatsapp': 'WhatsApp',
 
-    'hero.eyebrow':  'South Florida · MIA & FLL · Ports · Hotel Delivery',
+    'hero.eyebrow':  'Pick & Go Rent A Car · Miami & Fort Lauderdale · MIA & FLL · Ports · Hotel Delivery',
     'hero.title':    'Pick a car.<br/>Go anywhere.',
     'hero.subtitle': 'Premium rental cars in Miami & Fort Lauderdale. Reserve in 60 seconds. Instant reply via WhatsApp.',
     'hero.urgency':  '⚡ High demand — only a few vehicles left this week',
@@ -223,7 +223,7 @@ const I18N = {
     'nav.faq':      'Preguntas',
     'nav.whatsapp': 'WhatsApp',
 
-    'hero.eyebrow':  'Sur de Florida · MIA & FLL · Puertos · Entrega en hotel',
+    'hero.eyebrow':  'Pick & Go Rent A Car · Miami y Fort Lauderdale · MIA & FLL · Puertos · Entrega en hotel',
     'hero.title':    'Elige tu auto.<br/>Conduce a donde quieras.',
     'hero.subtitle': 'Renta de autos premium en Miami y Fort Lauderdale. Reserva en 60 segundos. Respuesta inmediata por WhatsApp.',
     'hero.urgency':  '⚡ Alta demanda — quedan pocos vehículos disponibles esta semana',
