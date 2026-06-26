@@ -965,6 +965,7 @@ document.addEventListener('DOMContentLoaded', () => {
   wireFleetModal();
   document.getElementById('reserveNowBtn')?.addEventListener('click', openCategoryPicker);
   document.getElementById('stickyBookNowBtn')?.addEventListener('click', openCategoryPicker);
+  document.getElementById('heroBookNowBtn')?.addEventListener('click', openCategoryPicker);
   wireFormSubmit();
   wireToastClose();
   wireScrollSpy();
