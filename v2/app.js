@@ -21,12 +21,34 @@ const IMG = id => `https://images.unsplash.com/${id}?w=640&q=80&auto=format&fit=
 
 const CARS = [
   { id: 'sedan',   rate: 55,  img: IMG('photo-1623869675781-80aa31012a5a'), models: 'Kia Forte' },
-  { id: 'suv',     rate: 75,  img: IMG('photo-1617469767053-d3b523a0b982'), models: 'Toyota RAV4 · VW Tiguan' },
-  { id: 'minivan', rate: 95,  img: IMG('photo-1623371857133-6d5552bbdc13'), models: 'Honda Odyssey · Toyota Sienna · Chrysler Pacifica' },
-  { id: 'luxury',  rate: 160, img: IMG('photo-1683778547049-8d969766b441'), models: 'Cadillac Escalade · Chevrolet Suburban' }
+  { id: 'suv',     rate: 75,  img: IMG('photo-1617469767053-d3b523a0b982'), models: 'Toyota RAV4, VW Tiguan' },
+  { id: 'minivan', rate: 95,  img: IMG('photo-1623371857133-6d5552bbdc13'), models: 'Honda Odyssey, Toyota Sienna, Chrysler Pacifica' },
+  { id: 'luxury',  rate: 160, img: IMG('photo-1683778547049-8d969766b441'), models: 'Cadillac Escalade, Chevrolet Suburban' }
 ];
 
 const LOCATIONS = ['mia', 'fll', 'portmia', 'portfll', 'hotel'];
+
+/* Icons: Phosphor (bold, star is fill), inlined so nothing extra loads */
+const ICON_PATHS = {
+  'airplane-landing': '<path d="M256,216a12,12,0,0,1-12,12H104a12,12,0,0,1,0-24H244A12,12,0,0,1,256,216Zm-27.24-24.45L52.14,142.09A44.13,44.13,0,0,1,20,99.72V48A20,20,0,0,1,46.32,29l5.48,1.83a12,12,0,0,1,7.49,7.3L69.2,65.59,92,72.09V48a20,20,0,0,1,26.32-19l5.48,1.83a12,12,0,0,1,7.27,6.74l21.75,51.85,59,16.49A44.12,44.12,0,0,1,244,148.32V180a12,12,0,0,1-15.24,11.55ZM220,148.32a20.05,20.05,0,0,0-14.65-19.27L140.77,111a12,12,0,0,1-7.84-6.91L116,63.71V88a12,12,0,0,1-15.29,11.54L56.71,87a12,12,0,0,1-8-7.46L44,66.48V99.72A20.07,20.07,0,0,0,58.61,119L220,164.18Z"/>',
+  'arrow-left': '<path d="M228,128a12,12,0,0,1-12,12H69l51.52,51.51a12,12,0,0,1-17,17l-72-72a12,12,0,0,1,0-17l72-72a12,12,0,0,1,17,17L69,116H216A12,12,0,0,1,228,128Z"/>',
+  'caret-right': '<path d="M184.49,136.49l-80,80a12,12,0,0,1-17-17L159,128,87.51,56.49a12,12,0,1,1,17-17l80,80A12,12,0,0,1,184.49,136.49Z"/>',
+  'check': '<path d="M232.49,80.49l-128,128a12,12,0,0,1-17,0l-56-56a12,12,0,1,1,17-17L96,183,215.51,63.51a12,12,0,0,1,17,17Z"/>',
+  'coins': '<path d="M188,86.11V84c0-14.62-10.83-27.55-30.51-36.4C140.87,40.12,119,36,96,36S51.13,40.12,34.51,47.6C14.83,56.45,4,69.38,4,84v40c0,14.62,10.83,27.55,30.51,36.4A131.67,131.67,0,0,0,68,169.88V172c0,14.62,10.83,27.55,30.51,36.4C115.13,215.88,137,220,160,220s44.87-4.12,61.49-11.6C241.17,199.55,252,186.62,252,172V132C252,109.86,226.71,92.08,188,86.11ZM228,132c0,7.75-21.77,22.48-61.81,23.88C180.33,147.4,188,136.3,188,124V110.44C213.88,115.15,228,125.48,228,132ZM107.37,147.63c-3.63.24-7.42.37-11.37.37-5.08,0-9.89-.22-14.43-.61a10.94,10.94,0,0,0-1.14-.09c-1.51-.14-3-.3-4.43-.48V130.93A187,187,0,0,0,96,132a187,187,0,0,0,20-1.07v15.89c-2.49.3-5.07.56-7.75.75C108,147.58,107.66,147.6,107.37,147.63ZM164,117.14V124c0,4.78-8.28,12.21-24,17.54v-15a115.32,115.32,0,0,0,17.49-6.13Q160.93,118.86,164,117.14ZM96,60c44,0,68,15.85,68,24s-24,24-68,24S28,92.15,28,84,52,60,96,60ZM28,124v-6.86q3.08,1.71,6.51,3.26A115.32,115.32,0,0,0,52,126.53v15C36.28,136.21,28,128.78,28,124Zm64,48v0c1.33,0,2.66,0,4,0q5.44,0,10.77-.32,4.45,1.57,9.23,2.86v15C100.28,184.21,92,176.78,92,172Zm48,22.82V178.94A186.45,186.45,0,0,0,160,180a187,187,0,0,0,20-1.07v15.89a170.08,170.08,0,0,1-40,0Zm64-5.28v-15a115.32,115.32,0,0,0,17.49-6.13q3.44-1.54,6.51-3.26V172C228,176.78,219.72,184.21,204,189.54Z"/>',
+  'key': '<path d="M196,76a16,16,0,1,1-16-16A16,16,0,0,1,196,76Zm48,22.74A84.3,84.3,0,0,1,160.11,180H160a83.52,83.52,0,0,1-23.65-3.38l-7.86,7.87A12,12,0,0,1,120,188H108v12a12,12,0,0,1-12,12H84v12a12,12,0,0,1-12,12H40a20,20,0,0,1-20-20V187.31a19.86,19.86,0,0,1,5.86-14.14l53.52-53.52A84,84,0,1,1,244,98.74ZM202.43,53.57A59.48,59.48,0,0,0,158,36c-32,1-58,27.89-58,59.89a59.69,59.69,0,0,0,4.2,22.19,12,12,0,0,1-2.55,13.21L44,189v23H60V200a12,12,0,0,1,12-12H84V176a12,12,0,0,1,12-12h19l9.65-9.65a12,12,0,0,1,13.22-2.55A59.58,59.58,0,0,0,160,156h.08c32,0,58.87-26.07,59.89-58A59.55,59.55,0,0,0,202.43,53.57Z"/>',
+  'map-pin': '<path d="M128,60a44,44,0,1,0,44,44A44.05,44.05,0,0,0,128,60Zm0,64a20,20,0,1,1,20-20A20,20,0,0,1,128,124Zm0-112a92.1,92.1,0,0,0-92,92c0,77.36,81.64,135.4,85.12,137.83a12,12,0,0,0,13.76,0,259,259,0,0,0,42.18-39C205.15,170.57,220,136.37,220,104A92.1,92.1,0,0,0,128,12Zm31.3,174.71A249.35,249.35,0,0,1,128,216.89a249.35,249.35,0,0,1-31.3-30.18C80,167.37,60,137.31,60,104a68,68,0,0,1,136,0C196,137.31,176,167.37,159.3,186.71Z"/>',
+  'phone': '<path d="M224,154.8l-47.09-21.11-.18-.08a19.94,19.94,0,0,0-19,1.75,13.08,13.08,0,0,0-1.12.84l-22.31,19c-13-7.05-26.43-20.37-33.49-33.21l19.06-22.66a11.76,11.76,0,0,0,.85-1.15,20,20,0,0,0,1.66-18.83,1.42,1.42,0,0,1-.08-.18L101.2,32A20.06,20.06,0,0,0,80.42,20.15,60.27,60.27,0,0,0,28,80c0,81.61,66.39,148,148,148a60.27,60.27,0,0,0,59.85-52.42A20.06,20.06,0,0,0,224,154.8ZM176,204A124.15,124.15,0,0,1,52,80,36.29,36.29,0,0,1,80.48,44.46l18.82,42L80.14,109.28a12,12,0,0,0-.86,1.16A20,20,0,0,0,78,130.08c9.42,19.28,28.83,38.56,48.31,48A20,20,0,0,0,146,176.63a11.63,11.63,0,0,0,1.11-.85l22.43-19.07,42,18.81A36.29,36.29,0,0,1,176,204Z"/>',
+  'road-horizon': '<path d="M237.88,202.46a12,12,0,0,1-16.34-4.58L153,76H140v4a12,12,0,0,1-24,0V76H103L34.46,197.88a12,12,0,1,1-20.92-11.76L75.48,76H24a12,12,0,0,1,0-24H232a12,12,0,0,1,0,24H180.52l61.94,110.12A12,12,0,0,1,237.88,202.46ZM128,108a12,12,0,0,0-12,12v16a12,12,0,0,0,24,0V120A12,12,0,0,0,128,108Zm0,56a12,12,0,0,0-12,12v16a12,12,0,0,0,24,0V176A12,12,0,0,0,128,164Z"/>',
+  'shield-check': '<path d="M208,36H48A20,20,0,0,0,28,56v56c0,54.29,26.32,87.22,48.4,105.29,23.71,19.39,47.44,26,48.44,26.29a12.1,12.1,0,0,0,6.32,0c1-.28,24.73-6.9,48.44-26.29,22.08-18.07,48.4-51,48.4-105.29V56A20,20,0,0,0,208,36Zm-4,76c0,35.71-13.09,64.69-38.91,86.15A126.28,126.28,0,0,1,128,219.38a126.14,126.14,0,0,1-37.09-21.23C65.09,176.69,52,147.71,52,112V60H204ZM79.51,144.49a12,12,0,1,1,17-17L112,143l47.51-47.52a12,12,0,0,1,17,17l-56,56a12,12,0,0,1-17,0Z"/>',
+  'star': '<path d="M234.29,114.85l-45,38.83L203,211.75a16.4,16.4,0,0,1-24.5,17.82L128,198.49,77.47,229.57A16.4,16.4,0,0,1,53,211.75l13.76-58.07-45-38.83A16.46,16.46,0,0,1,31.08,86l59-4.76,22.76-55.08a16.36,16.36,0,0,1,30.27,0l22.75,55.08,59,4.76a16.46,16.46,0,0,1,9.37,28.86Z"/>',
+  'steering-wheel': '<path d="M144,144a16,16,0,1,1-16-16A16,16,0,0,1,144,144Zm92-16A108,108,0,1,1,128,20,108.12,108.12,0,0,1,236,128Zm-70.45,28h41.63c.79-2.21,1.49-4.47,2.09-6.76a116,116,0,0,0-162.54,0q.9,3.44,2.09,6.76H90.45a20.07,20.07,0,0,1,18.73,13l16.06,42.93c.92,0,1.83.07,2.76.07s1.82,0,2.72-.07l16.1-43A20.09,20.09,0,0,1,165.55,156ZM44.41,119.73a139.85,139.85,0,0,1,167.18,0,84,84,0,0,0-167.18,0Zm53.08,86.51L87.68,180H62.1A84.46,84.46,0,0,0,97.49,206.24ZM193.9,180H168.32l-9.84,26.25A84.35,84.35,0,0,0,193.9,180Z"/>',
+  'users': '<path d="M125.18,156.94a64,64,0,1,0-82.36,0,100.23,100.23,0,0,0-39.49,32,12,12,0,0,0,19.35,14.2,76,76,0,0,1,122.64,0,12,12,0,0,0,19.36-14.2A100.33,100.33,0,0,0,125.18,156.94ZM44,108a40,40,0,1,1,40,40A40,40,0,0,1,44,108Zm206.1,97.67a12,12,0,0,1-16.78-2.57A76.31,76.31,0,0,0,172,172a12,12,0,0,1,0-24,40,40,0,1,0-10.3-78.67,12,12,0,1,1-6.16-23.19,64,64,0,0,1,57.64,110.8,100.23,100.23,0,0,1,39.49,32A12,12,0,0,1,250.1,205.67Z"/>',
+  'whatsapp-logo': '<path d="M187.3,159.06A36.09,36.09,0,0,1,152,188a84.09,84.09,0,0,1-84-84A36.09,36.09,0,0,1,96.94,68.7,12,12,0,0,1,110,75.1l11.48,23a12,12,0,0,1-.75,12l-8.52,12.78a44.56,44.56,0,0,0,20.91,20.91l12.78-8.52a12,12,0,0,1,12-.75l23,11.48A12,12,0,0,1,187.3,159.06ZM236,128A108,108,0,0,1,78.77,224.15L46.34,235A20,20,0,0,1,21,209.66l10.81-32.43A108,108,0,1,1,236,128Zm-24,0A84,84,0,1,0,55.27,170.06a12,12,0,0,1,1,9.81l-9.93,29.79,29.79-9.93a12.1,12.1,0,0,1,3.8-.62,12,12,0,0,1,6,1.62A84,84,0,0,0,212,128Z"/>',
+};
+
+function icon(name) {
+  return '<svg class="ic" viewBox="0 0 256 256" width="1em" height="1em" fill="currentColor" aria-hidden="true">' + (ICON_PATHS[name] || '') + '</svg>';
+}
 
 /* ---------- Translations ---------- */
 const T = {
@@ -35,10 +57,18 @@ const T = {
 
     'hero.title': 'Your rental car, waiting at arrivals.',
     'hero.sub': 'We deliver to MIA, FLL, the cruise ports and your hotel. Insurance, tolls and delivery are in the price.',
-    'hero.callLabel': 'Call us',
-    'hero.fact1': '5.0 on Google from 21 reviews',
-    'hero.fact2': 'Open 24/7',
-    'hero.fact3': 'English and Spanish',
+    'hero.callLabel': 'Call to reserve',
+
+    'nav.cars': 'Cars',
+    'nav.pickup': 'Pickup',
+    'nav.reviews': 'Reviews',
+    'nav.faq': 'Questions',
+
+    'facts.google': 'on Google, 21 reviews',
+    'facts.hours': 'pickup, any day of the year',
+    'facts.places': 'both cruise ports and hotels',
+    'facts.langBig': 'EN / ES',
+    'facts.lang': 'we answer in both',
 
     'covers.title': 'What your price covers',
     'covers.lede': 'You pay the amount on your quote. We add nothing at pickup.',
@@ -50,7 +80,7 @@ const T = {
 
     'fleet.title': 'Choose your car',
     'fleet.lede': 'Ten vehicles, from a sedan for two to an Escalade for the whole group.',
-    'fleet.cta': 'Get the price',
+    'fleet.cta': 'Get price',
 
     'car.sedan': 'Sedan',
     'car.suv': 'SUV',
@@ -75,8 +105,8 @@ const T = {
     'how.h3': 'Going home',
     'how.p3': 'Return the car at the airport, the port or your hotel, whichever is on your way.',
 
-    'reviews.title': '5.0 on Google',
-    'reviews.link': 'Read all 21 reviews',
+    'reviews.title': 'Rated by 21 renters on Google',
+    'reviews.link': 'Read every review',
     'reviews.source': 'Google review',
 
     'faq.title': 'Questions',
@@ -151,10 +181,18 @@ const T = {
 
     'hero.title': 'Tu auto te espera en llegadas.',
     'hero.sub': 'Entregamos en MIA, FLL, los puertos de cruceros y tu hotel. El precio incluye seguro, peajes y entrega.',
-    'hero.callLabel': 'Llámanos',
-    'hero.fact1': '5.0 en Google con 21 reseñas',
-    'hero.fact2': 'Abierto 24/7',
-    'hero.fact3': 'Español e inglés',
+    'hero.callLabel': 'Llama y reserva',
+
+    'nav.cars': 'Autos',
+    'nav.pickup': 'Entrega',
+    'nav.reviews': 'Reseñas',
+    'nav.faq': 'Preguntas',
+
+    'facts.google': 'en Google, 21 reseñas',
+    'facts.hours': 'entregas, todos los días del año',
+    'facts.places': 'los dos puertos y hoteles',
+    'facts.langBig': 'ES / EN',
+    'facts.lang': 'atendemos en ambos',
 
     'covers.title': 'Lo que cubre tu precio',
     'covers.lede': 'Pagas el monto de tu cotización. No sumamos nada en la entrega.',
@@ -166,7 +204,7 @@ const T = {
 
     'fleet.title': 'Elige tu auto',
     'fleet.lede': 'Diez vehículos, desde un sedán para dos hasta una Escalade para todo el grupo.',
-    'fleet.cta': 'Ver el precio',
+    'fleet.cta': 'Ver precio',
 
     'car.sedan': 'Sedán',
     'car.suv': 'SUV',
@@ -191,8 +229,8 @@ const T = {
     'how.h3': 'Al regresar',
     'how.p3': 'Devuelve el auto en el aeropuerto, el puerto o tu hotel, donde te quede mejor.',
 
-    'reviews.title': '5.0 en Google',
-    'reviews.link': 'Lee las 21 reseñas',
+    'reviews.title': 'Calificado por 21 clientes en Google',
+    'reviews.link': 'Lee todas las reseñas',
     'reviews.source': 'Reseña de Google',
 
     'faq.title': 'Preguntas',
@@ -263,16 +301,17 @@ const T = {
   }
 };
 
+/* Excerpts from real Google reviews, kept short */
 const REVIEWS = [
   { name: 'Erika Saavedra',
-    en: 'I came for two weeks with my daughter and rented two cars, one for Miami and another for the round trip to Orlando. They were punctual with deliveries, always available, and sent clear instructions for pickup and drop-off at both the port and the airports.',
-    es: 'Vine por dos semanas con mi hija y renté dos autos, uno para los primeros días en Miami y otro para el viaje de ida y vuelta a Orlando. Fueron puntuales, siempre al pendiente y me enviaron indicaciones claras para recoger y dejar los autos en el puerto y los aeropuertos.' },
+    en: 'They were punctual with deliveries, always available, and sent clear instructions for pickup and drop-off at the port and the airports.',
+    es: 'Fueron puntuales, siempre al pendiente y me enviaron indicaciones claras para recoger y dejar los autos en el puerto y los aeropuertos.' },
   { name: 'Mariano Leon',
-    en: 'Very professional service and spotless, new cars! I rented a van for a week and everything was great. Customer service was top-notch from the moment I contacted them until the very end.',
-    es: 'Servicio muy profesional y autos impecables y nuevos! Alquilé una camioneta por una semana y todo estuvo perfecto. El trato del equipo de primera desde que tuve contacto con ellos hasta el final.' },
+    en: 'Very professional service and spotless, new cars. I rented a van for a week and everything was great.',
+    es: 'Servicio muy profesional y autos impecables y nuevos. Alquilé una camioneta por una semana y todo estuvo perfecto.' },
   { name: 'Renato Mendoza',
-    en: 'Excellent service!! They delivered the car to the Port of Miami exactly when I needed it. New and reliable vehicles!! Great service from the entire team.',
-    es: '¡Excelente Servicio!! Esta vez me lo dejaron en el Puerto de Miami con los horarios que necesitaba. Vehículos nuevos y sobre todo confiables. Gran atención de todo su equipo.' },
+    en: 'They delivered the car to the Port of Miami exactly when I needed it. New and reliable vehicles.',
+    es: 'Me lo dejaron en el Puerto de Miami con los horarios que necesitaba. Vehículos nuevos y sobre todo confiables.' },
   { name: 'Francesco P.',
     en: 'Outstanding service as usual, car is spotless, new and always on time and stress free.',
     es: 'Servicio excepcional como siempre, el auto impecable, nuevo y siempre puntual. Sin estrés.' }
@@ -316,6 +355,7 @@ const state = {
   error: '',
   callbackAsked: false
 };
+let lastRenderedStep = 0;
 
 /* ---------- Helpers ---------- */
 const $ = sel => document.querySelector(sel);
@@ -422,7 +462,7 @@ function pickedBar() {
   const car = carById(state.car);
   if (!car) return '';
   return `<div class="fn-picked">
-      <span><strong>${t('car.' + car.id)}</strong> · ${t('car.from')} $${car.rate}${t('car.perDay')}</span>
+      <span><strong>${t('car.' + car.id)}</strong>, ${t('car.from')} $${car.rate}${t('car.perDay')}</span>
       <button type="button" class="link-btn" data-go="1">${t('fn.change')}</button>
     </div>`;
 }
@@ -439,7 +479,7 @@ function renderStep1() {
       <span>
         <span class="car-opt-name">${t('car.' + c.id)}</span>
         <span class="car-opt-meta">${c.models}</span>
-        <span class="car-opt-meta">${t('car.' + c.id + '.seats')}</span>
+        <span class="car-opt-meta car-opt-seats">${icon('users')} ${t('car.' + c.id + '.seats')}</span>
       </span>
       <span class="car-opt-price">${t('car.from')}<b>$${c.rate}</b>${t('car.perDay')}</span>
     </button>`).join('');
@@ -483,7 +523,7 @@ function renderStep2() {
       </div>
       ${state.error ? `<p class="fn-error" role="alert">${t(state.error)}</p>` : ''}
       <div class="fn-actions">
-        <button type="button" class="btn btn-ghost" data-go="1">${t('fn.back')}</button>
+        <button type="button" class="btn btn-ghost" data-go="1" aria-label="${t('fn.back')}">${icon('arrow-left')}</button>
         <button type="submit" class="btn btn-primary">${t('fn.continue')}</button>
       </div>
     </form>`;
@@ -504,7 +544,7 @@ function renderStep3() {
       </div>
       ${state.error ? `<p class="fn-error" role="alert">${t(state.error)}</p>` : ''}
       <div class="fn-actions">
-        <button type="button" class="btn btn-ghost" data-go="2">${t('fn.back')}</button>
+        <button type="button" class="btn btn-ghost" data-go="2" aria-label="${t('fn.back')}">${icon('arrow-left')}</button>
         <button type="submit" class="btn btn-primary">${t('fn.showPrice')}</button>
       </div>
       <p class="fn-small">${t('fn.contactNote')}</p>
@@ -525,9 +565,13 @@ function renderStep4() {
         <img src="${car.img}" alt="" width="96" height="68" />
         <div>
           <p class="quote-car">${t('car.' + car.id)}</p>
-          <p class="quote-trip">${niceDate(state.pickupDate)}, ${state.pickupTime} · ${niceDate(state.returnDate)}<br/>${t('loc.' + state.pickupLoc)}${sameReturn ? '' : ' · ' + t('loc.' + returnLocKey())}</p>
+          <p class="quote-models">${car.models}</p>
         </div>
       </div>
+      <dl class="quote-trip">
+        <div><dt>${t('fn.pickupLoc')}</dt><dd>${niceDate(state.pickupDate)}, ${state.pickupTime}<br/>${t('loc.' + state.pickupLoc)}</dd></div>
+        <div><dt>${t('fn.returnLoc')}</dt><dd>${niceDate(state.returnDate)}${sameReturn ? '' : '<br/>' + t('loc.' + returnLocKey())}</dd></div>
+      </dl>
       <div class="quote-total">
         <span>${t('fn.total')}</span>
         <b>$${total.toLocaleString('en-US')}</b>
@@ -535,13 +579,13 @@ function renderStep4() {
     </div>
     <p class="quote-note">${t('fn.rateLine', { rate: car.rate, days: daysLabel(days) })} ${SAMPLE_RATES ? t('fn.sample') : t('fn.confirm')}</p>
     <ul class="quote-incl">
-      <li>${t('fn.i1')}</li>
-      <li>${t('fn.i2')}</li>
-      <li>${t('fn.i3')}</li>
+      <li>${icon('check')}<span>${t('fn.i1')}</span></li>
+      <li>${icon('check')}<span>${t('fn.i2')}</span></li>
+      <li>${icon('check')}<span>${t('fn.i3')}</span></li>
     </ul>
     <div class="quote-actions">
-      <a class="btn btn-primary btn-lg btn-block" href="tel:${PHONE_TEL}" data-track="call_quote">${t('fn.call')} · ${PHONE_DISPLAY}</a>
-      <a class="btn btn-wa btn-block" href="${waLink(quoteMessage())}" target="_blank" rel="noopener" data-track="wa_quote">${t('fn.wa')}</a>
+      <a class="btn btn-primary btn-lg btn-block" href="tel:${PHONE_TEL}" data-track="call_quote">${icon('phone')}<span>${t('fn.call')}</span></a>
+      <a class="btn btn-wa btn-block" href="${waLink(quoteMessage())}" target="_blank" rel="noopener" data-track="wa_quote">${icon('whatsapp-logo')}<span>${t('fn.wa')}</span></a>
     </div>
     ${callback}
     <div class="quote-foot">
@@ -555,6 +599,12 @@ function renderFunnel(opts) {
   if (!root) return;
   const html = [null, renderStep1, renderStep2, renderStep3, renderStep4][state.step]();
   root.innerHTML = html;
+  root.classList.remove('fn-enter');
+  if (lastRenderedStep && lastRenderedStep !== state.step) {
+    void root.offsetWidth;
+    root.classList.add('fn-enter');
+  }
+  lastRenderedStep = state.step;
   bindFunnel();
   if (opts && opts.focus) {
     const title = $('#fnTitle');
@@ -668,16 +718,16 @@ function renderFleet() {
   if (!grid) return;
   grid.innerHTML = CARS.map(c => `
     <article class="fleet-card">
-      <img src="${c.img}" alt="${esc(c.models)}" width="640" height="400" loading="lazy" />
+      <div class="fleet-photo"><img src="${c.img}" alt="${esc(c.models)}" width="640" height="400" loading="lazy" /></div>
       <div class="fleet-body">
-        <div class="fleet-row">
-          <h3>${t('car.' + c.id)}</h3>
-          <span class="fleet-price">${t('car.from')} <b>$${c.rate}</b>${t('car.perDay')}</span>
-        </div>
+        <h3>${t('car.' + c.id)}</h3>
         <p class="fleet-models">${c.models}</p>
-        <p class="fleet-blurb">${t('car.' + c.id + '.seats')}. ${t('car.' + c.id + '.blurb')}</p>
-        <div class="fleet-spacer"></div>
-        <button type="button" class="btn btn-navy btn-block" data-fleet="${c.id}">${t('fleet.cta')}</button>
+        <p class="fleet-blurb">${t('car.' + c.id + '.blurb')}</p>
+        <p class="fleet-seats">${icon('users')} ${t('car.' + c.id + '.seats')}</p>
+        <div class="fleet-foot">
+          <span class="fleet-price">${t('car.from')} <b>$${c.rate}</b>${t('car.perDay')}</span>
+          <button type="button" class="btn btn-navy" data-fleet="${c.id}">${t('fleet.cta')}${icon('caret-right')}</button>
+        </div>
       </div>
     </article>`).join('');
   grid.querySelectorAll('[data-fleet]').forEach(btn => {
@@ -690,9 +740,8 @@ function renderReviews() {
   if (!grid) return;
   grid.innerHTML = REVIEWS.map(r => `
     <figure class="review">
-      <div class="review-stars" aria-label="5 / 5">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-      <blockquote>${esc(r[lang] || r.en)}</blockquote>
-      <cite>${esc(r.name)}<span>${t('reviews.source')}</span></cite>
+      <blockquote>“${esc(r[lang] || r.en)}”</blockquote>
+      <figcaption>${esc(r.name)}<span>${t('reviews.source')}</span></figcaption>
     </figure>`).join('');
 }
 
@@ -731,7 +780,13 @@ function initialLanguage() {
 
 /* ---------- Init ---------- */
 document.addEventListener('DOMContentLoaded', () => {
-  ['googleLinkHero', 'googleLinkReviews'].forEach(id => {
+  document.documentElement.classList.add('js');
+
+  document.querySelectorAll('[data-icon]').forEach(el => { el.innerHTML = icon(el.dataset.icon); });
+  const stars = $('#scoreStars');
+  if (stars) stars.innerHTML = icon('star').repeat(5);
+
+  ['googleLinkFacts', 'googleLinkReviews'].forEach(id => {
     const a = document.getElementById(id);
     if (a) a.href = GOOGLE_REVIEWS_URL;
   });
@@ -749,4 +804,12 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   applyLanguage(initialLanguage());
+
+  /* Sections fade up once as they enter the viewport */
+  if ('IntersectionObserver' in window) {
+    const io = new IntersectionObserver(entries => {
+      entries.forEach(en => { if (en.isIntersecting) { en.target.classList.add('is-in'); io.unobserve(en.target); } });
+    }, { rootMargin: '0px 0px -8% 0px' });
+    document.querySelectorAll('main > section:not(.hero)').forEach(el => { el.classList.add('reveal'); io.observe(el); });
+  }
 });

@@ -4,12 +4,14 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="robots" content="noindex, nofollow" />
+  <meta name="color-scheme" content="light" />
   <title>Pick &amp; Go Rent A Car | Preview</title>
   <meta name="theme-color" content="#0F1B3C" />
   <link rel="icon" type="image/png" href="../logo-pg.png" />
+  <link rel="preload" as="image" href="hero-poster.jpg" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@700;800&family=Geist:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
@@ -20,13 +22,19 @@
   <header class="site-header">
     <div class="wrap header-inner">
       <a href="#top" class="brand" aria-label="Pick &amp; Go Rent A Car">
-        <img src="../logo-pg.png" alt="" height="36" />
+        <img src="../logo-pg.png" alt="" width="38" height="38" />
         <span class="brand-name">PICK<span class="brand-amp">&amp;</span>GO</span>
       </a>
+      <nav class="header-nav" aria-label="Primary">
+        <a href="#fleet" data-i18n="nav.cars">Cars</a>
+        <a href="#pickup" data-i18n="nav.pickup">Pickup</a>
+        <a href="#reviews" data-i18n="nav.reviews">Reviews</a>
+        <a href="#faq" data-i18n="nav.faq">Questions</a>
+      </nav>
       <div class="header-right">
-        <a class="header-call" href="tel:+17542653882" data-track="call_header">
-          <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path fill="currentColor" d="M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2a1 1 0 0 1 1-.25c1.1.37 2.3.57 3.6.57a1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.25.2 2.45.57 3.57a1 1 0 0 1-.25 1z"/></svg>
-          <span>754-265-3882</span>
+        <a class="header-call" href="tel:+17542653882" data-track="call_header" aria-label="754-265-3882">
+          <span class="icon" data-icon="phone"></span>
+          <span class="header-call-num">754-265-3882</span>
         </a>
         <div class="lang" role="group" aria-label="Language">
           <button type="button" data-lang="en">EN</button>
@@ -50,14 +58,12 @@
           <h1 data-i18n="hero.title">Your rental car, waiting at arrivals.</h1>
           <p class="hero-sub" data-i18n="hero.sub">We deliver to MIA, FLL, the cruise ports and your hotel. Insurance, tolls and delivery are in the price.</p>
           <a class="hero-call" href="tel:+17542653882" data-track="call_hero">
-            <span class="hero-call-label" data-i18n="hero.callLabel">Call us</span>
-            <span class="hero-call-number">754-265-3882</span>
+            <span class="hero-call-icon icon" data-icon="phone"></span>
+            <span>
+              <span class="hero-call-label" data-i18n="hero.callLabel">Call to reserve</span>
+              <span class="hero-call-number">754-265-3882</span>
+            </span>
           </a>
-          <ul class="hero-facts">
-            <li><a id="googleLinkHero" href="#" target="_blank" rel="noopener" data-i18n="hero.fact1">5.0 on Google from 21 reviews</a></li>
-            <li data-i18n="hero.fact2">Open 24/7</li>
-            <li data-i18n="hero.fact3">English and Spanish</li>
-          </ul>
         </div>
 
         <div class="book" id="book">
@@ -66,21 +72,19 @@
       </div>
     </section>
 
-    <!-- WHAT THE PRICE COVERS -->
-    <section class="covers">
-      <div class="wrap covers-grid">
-        <div>
-          <h2 data-i18n="covers.title">What your price covers</h2>
-          <p class="lede" data-i18n="covers.lede">You pay the amount on your quote. We add nothing at pickup.</p>
-        </div>
-        <ul class="covers-list">
-          <li data-i18n="covers.i1">Collision and liability insurance</li>
-          <li data-i18n="covers.i2">Unlimited miles within Florida</li>
-          <li data-i18n="covers.i3">Tolls, with no SunPass to buy</li>
-          <li data-i18n="covers.i4">One additional driver</li>
-          <li data-i18n="covers.i5">Delivery to the airport, port or hotel</li>
-        </ul>
-      </div>
+    <!-- FACTS -->
+    <section class="facts" aria-label="Pick &amp; Go at a glance">
+      <ul class="wrap facts-grid">
+        <li>
+          <a id="googleLinkFacts" href="#" target="_blank" rel="noopener">
+            <b>5.0</b>
+            <span data-i18n="facts.google">on Google, 21 reviews</span>
+          </a>
+        </li>
+        <li><b>24/7</b><span data-i18n="facts.hours">pickup, any day of the year</span></li>
+        <li><b>MIA + FLL</b><span data-i18n="facts.places">both cruise ports and hotels</span></li>
+        <li><b data-i18n="facts.langBig">ES / EN</b><span data-i18n="facts.lang">we answer in both</span></li>
+      </ul>
     </section>
 
     <!-- FLEET -->
@@ -92,35 +96,67 @@
       </div>
     </section>
 
-    <!-- HOW PICKUP WORKS -->
-    <section class="how">
+    <!-- WHAT THE PRICE COVERS -->
+    <section class="covers">
       <div class="wrap">
-        <h2 data-i18n="how.title">How pickup works</h2>
-        <div class="how-grid">
-          <div class="how-item">
-            <h3 data-i18n="how.h1">Before you land</h3>
-            <p data-i18n="how.p1">We track your flight. If it runs late, you pay nothing extra.</p>
-          </div>
-          <div class="how-item">
-            <h3 data-i18n="how.h2">At arrivals</h3>
-            <p data-i18n="how.p2">We meet you with the car. You sign, take the keys and go. You skip the counter and the shuttle.</p>
-          </div>
-          <div class="how-item">
-            <h3 data-i18n="how.h3">Going home</h3>
-            <p data-i18n="how.p3">Return the car at the airport, the port or your hotel, whichever is on your way.</p>
-          </div>
+        <h2 data-i18n="covers.title">What your price covers</h2>
+        <p class="lede" data-i18n="covers.lede">You pay the amount on your quote. We add nothing at pickup.</p>
+        <ul class="covers-list">
+          <li><span class="icon" data-icon="shield-check"></span><span data-i18n="covers.i1">Collision and liability insurance</span></li>
+          <li><span class="icon" data-icon="road-horizon"></span><span data-i18n="covers.i2">Unlimited miles within Florida</span></li>
+          <li><span class="icon" data-icon="coins"></span><span data-i18n="covers.i3">Tolls, with no SunPass to buy</span></li>
+          <li><span class="icon" data-icon="users"></span><span data-i18n="covers.i4">One additional driver</span></li>
+          <li><span class="icon" data-icon="map-pin"></span><span data-i18n="covers.i5">Delivery to the airport, port or hotel</span></li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- HOW PICKUP WORKS -->
+    <section class="how" id="pickup">
+      <div class="wrap how-grid">
+        <!-- TODO: real photo of a Pick & Go handoff at arrivals, 1100x800 -->
+        <div class="how-photo">
+          <img src="drive.jpg" alt="" width="1100" height="619" loading="lazy" />
+        </div>
+        <div>
+          <h2 data-i18n="how.title">How pickup works</h2>
+          <ul class="how-list">
+            <li>
+              <span class="icon" data-icon="airplane-landing"></span>
+              <div>
+                <h3 data-i18n="how.h1">Before you land</h3>
+                <p data-i18n="how.p1">We track your flight. If it runs late, you pay nothing extra.</p>
+              </div>
+            </li>
+            <li>
+              <span class="icon" data-icon="key"></span>
+              <div>
+                <h3 data-i18n="how.h2">At arrivals</h3>
+                <p data-i18n="how.p2">We meet you with the car. You sign, take the keys and go. You skip the counter and the shuttle.</p>
+              </div>
+            </li>
+            <li>
+              <span class="icon" data-icon="steering-wheel"></span>
+              <div>
+                <h3 data-i18n="how.h3">Going home</h3>
+                <p data-i18n="how.p3">Return the car at the airport, the port or your hotel, whichever is on your way.</p>
+              </div>
+            </li>
+          </ul>
         </div>
       </div>
     </section>
 
     <!-- REVIEWS -->
     <section class="reviews" id="reviews">
-      <div class="wrap">
-        <div class="reviews-head">
-          <h2 data-i18n="reviews.title">5.0 on Google</h2>
-          <a id="googleLinkReviews" class="text-link" href="#" target="_blank" rel="noopener" data-i18n="reviews.link">Read all 21 reviews</a>
+      <div class="wrap reviews-grid">
+        <div class="reviews-score">
+          <p class="score-num">5.0</p>
+          <p class="score-stars" id="scoreStars" aria-hidden="true"></p>
+          <h2 data-i18n="reviews.title">Rated by 21 renters on Google</h2>
+          <a id="googleLinkReviews" class="text-link" href="#" target="_blank" rel="noopener" data-i18n="reviews.link">Read every review</a>
         </div>
-        <div class="reviews-grid" id="reviewsGrid"></div>
+        <div class="reviews-list" id="reviewsGrid"></div>
       </div>
     </section>
 
@@ -134,16 +170,20 @@
 
     <!-- CLOSING CALL -->
     <section class="closing">
-      <div class="wrap closing-inner">
-        <h2 data-i18n="closing.title">Questions before you book? Call us.</h2>
-        <p data-i18n="closing.sub">We answer in English and Spanish, and we can hold a car for you on the call.</p>
-        <div class="closing-actions">
-          <a class="btn btn-primary btn-lg" href="tel:+17542653882" data-track="call_closing">
-            <span data-i18n="closing.call">Call 754-265-3882</span>
-          </a>
-          <a class="btn btn-wa btn-lg" data-wa href="https://wa.me/17542653882" target="_blank" rel="noopener" data-track="wa_closing">
-            <span data-i18n="closing.wa">Message on WhatsApp</span>
-          </a>
+      <div class="wrap">
+        <div class="closing-panel">
+          <h2 data-i18n="closing.title">Questions before you book? Call us.</h2>
+          <p data-i18n="closing.sub">We answer in English and Spanish, and we can hold a car for you on the call.</p>
+          <div class="closing-actions">
+            <a class="btn btn-primary btn-lg" href="tel:+17542653882" data-track="call_closing">
+              <span class="icon" data-icon="phone"></span>
+              <span data-i18n="closing.call">Call 754-265-3882</span>
+            </a>
+            <a class="btn btn-wa-solid btn-lg" data-wa href="https://wa.me/17542653882" target="_blank" rel="noopener" data-track="wa_closing">
+              <span class="icon" data-icon="whatsapp-logo"></span>
+              <span>WhatsApp</span>
+            </a>
+          </div>
         </div>
       </div>
     </section>
@@ -166,8 +206,12 @@
 
   <!-- MOBILE ACTION BAR -->
   <nav class="mobile-bar" aria-label="Quick actions">
-    <a class="mb-call" href="tel:+17542653882" data-track="call_bar" data-i18n="bar.call">Call</a>
-    <a class="mb-wa" data-wa href="https://wa.me/17542653882" target="_blank" rel="noopener" data-track="wa_bar">WhatsApp</a>
+    <a class="mb-call" href="tel:+17542653882" data-track="call_bar">
+      <span class="icon" data-icon="phone"></span><span data-i18n="bar.call">Call</span>
+    </a>
+    <a class="mb-wa" data-wa href="https://wa.me/17542653882" target="_blank" rel="noopener" data-track="wa_bar">
+      <span class="icon" data-icon="whatsapp-logo"></span><span>WhatsApp</span>
+    </a>
     <button type="button" class="mb-price" id="barPrice" data-i18n="bar.price">Get price</button>
   </nav>
 
