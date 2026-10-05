@@ -9,12 +9,13 @@
   <meta name="theme-color" content="#0F1B3C" />
   <link rel="icon" type="image/png" href="../logo-pg.png" />
   <link rel="preload" as="image" href="hero-poster.jpg" />
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@700;800&family=Geist:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="preload" as="font" type="font/woff2" href="fonts/archivo-latin-1.woff2" crossorigin>
+  <link rel="preload" as="font" type="font/woff2" href="fonts/geist-latin-1.woff2" crossorigin>
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
+
+  <a class="skip-link" href="#book" data-i18n="a11y.skip">Skip to booking</a>
 
   <!-- Preview notice. Remove before launch. -->
   <p class="preview-note" data-i18n="preview.note">Preview only. Prices are samples and photos are placeholders.</p>
@@ -37,8 +38,8 @@
           <span class="header-call-num">754-265-3882</span>
         </a>
         <div class="lang" role="group" aria-label="Language">
-          <button type="button" data-lang="en">EN</button>
-          <button type="button" data-lang="es">ES</button>
+          <button type="button" data-lang="en" lang="en" data-i18n-aria="a11y.english" aria-label="English">EN</button>
+          <button type="button" data-lang="es" lang="es" data-i18n-aria="a11y.spanish" aria-label="Spanish">ES</button>
         </div>
       </div>
     </div>
@@ -53,6 +54,7 @@
         <source src="hero.mp4" type="video/mp4" />
       </video>
       <div class="hero-shade" aria-hidden="true"></div>
+      <button type="button" class="video-toggle" id="videoToggle" data-i18n-aria="video.pause" aria-label="Pause background video"></button>
       <div class="wrap hero-grid">
         <div class="hero-copy">
           <h1 data-i18n="hero.title">Your rental car, waiting at arrivals.</h1>
@@ -67,7 +69,7 @@
         </div>
 
         <div class="book" id="book">
-          <div id="funnel" aria-live="polite"></div>
+          <div id="funnel"></div>
         </div>
       </div>
     </section>
@@ -93,6 +95,7 @@
         <h2 data-i18n="fleet.title">Choose your car</h2>
         <p class="lede" data-i18n="fleet.lede">Ten vehicles, from a sedan for two to an Escalade for the whole group.</p>
         <div class="fleet-grid" id="fleetGrid"></div>
+        <p class="fine" data-i18n="fleet.photoNote">Photos are examples. Your car will be one of the models listed.</p>
       </div>
     </section>
 
@@ -116,7 +119,7 @@
       <div class="wrap how-grid">
         <!-- TODO: real photo of a Pick & Go handoff at arrivals, 1100x800 -->
         <div class="how-photo">
-          <img src="drive.jpg" alt="" width="1100" height="619" loading="lazy" />
+          <img src="drive.jpg" alt="Open highway under a cloudy sky, seen from the road" data-i18n-alt="alt.drive" width="1100" height="619" loading="lazy" />
         </div>
         <div>
           <h2 data-i18n="how.title">How pickup works</h2>
@@ -153,8 +156,9 @@
         <div class="reviews-score">
           <p class="score-num">5.0</p>
           <p class="score-stars" id="scoreStars" aria-hidden="true"></p>
-          <h2 data-i18n="reviews.title">Rated by 21 renters on Google</h2>
-          <a id="googleLinkReviews" class="text-link" href="#" target="_blank" rel="noopener" data-i18n="reviews.link">Read every review</a>
+          <h2 data-i18n="reviews.title">21 reviews on Google</h2>
+          <a id="googleLinkReviews" class="text-link" href="#" target="_blank" rel="noopener"><span data-i18n="reviews.link">Read every review</span> <span class="sr-only" data-i18n="a11y.newTab">(opens in a new tab)</span></a>
+          <p class="fine" data-i18n="reviews.note">Excerpts from public Google reviews. Some are translated.</p>
         </div>
         <div class="reviews-list" id="reviewsGrid"></div>
       </div>
@@ -173,7 +177,7 @@
       <div class="wrap">
         <div class="closing-panel">
           <h2 data-i18n="closing.title">Questions before you book? Call us.</h2>
-          <p data-i18n="closing.sub">We answer in English and Spanish, and we can hold a car for you on the call.</p>
+          <p data-i18n="closing.sub">Talk to a person, in English or Spanish, before you pay anything.</p>
           <div class="closing-actions">
             <a class="btn btn-primary btn-lg" href="tel:+17542653882" data-track="call_closing">
               <span class="icon" data-icon="phone"></span>
@@ -181,7 +185,7 @@
             </a>
             <a class="btn btn-wa-solid btn-lg" data-wa href="https://wa.me/17542653882" target="_blank" rel="noopener" data-track="wa_closing">
               <span class="icon" data-icon="whatsapp-logo"></span>
-              <span>WhatsApp</span>
+              <span>WhatsApp <span class="sr-only" data-i18n="a11y.newTab">(opens in a new tab)</span></span>
             </a>
           </div>
         </div>
@@ -193,14 +197,21 @@
     <div class="wrap footer-inner">
       <div>
         <p class="footer-brand">PICK<span class="brand-amp">&amp;</span>GO <span class="footer-rent">RENT A CAR</span></p>
-        <p data-i18n="footer.area">Miami and Fort Lauderdale, Florida</p>
+        <p data-i18n="footer.area">Car rental in Miami and Fort Lauderdale. Based in Weston, Florida.</p>
+        <address class="footer-contact">
+          <a href="tel:+17542653882">754-265-3882</a>
+          <a href="mailto:pickandgorentacar@gmail.com">pickandgorentacar@gmail.com</a>
+          <a href="https://instagram.com/pickandgo_rentacar" target="_blank" rel="noopener">Instagram <span class="sr-only" data-i18n="a11y.newTab">(opens in a new tab)</span></a>
+        </address>
       </div>
-      <div class="footer-links">
-        <a href="tel:+17542653882">754-265-3882</a>
-        <a href="mailto:pickandgorentacar@gmail.com">pickandgorentacar@gmail.com</a>
-        <a href="https://instagram.com/pickandgo_rentacar" target="_blank" rel="noopener">Instagram</a>
-      </div>
+      <nav class="footer-links" aria-label="Legal">
+        <a href="privacy.html" data-i18n="footer.privacy">Privacy Policy</a>
+        <a href="terms.html" data-i18n="footer.terms">Terms and Conditions</a>
+        <a href="refunds.html" data-i18n="footer.refunds">Refund Policy</a>
+        <a href="cookies.html" data-i18n="footer.cookies">Cookie Policy</a>
+      </nav>
     </div>
+    <!-- TODO before launch: add the registered legal business name and street address here -->
     <p class="wrap footer-legal">&copy; 2026 Pick &amp; Go Rent A Car</p>
   </footer>
 
@@ -210,7 +221,7 @@
       <span class="icon" data-icon="phone"></span><span data-i18n="bar.call">Call</span>
     </a>
     <a class="mb-wa" data-wa href="https://wa.me/17542653882" target="_blank" rel="noopener" data-track="wa_bar">
-      <span class="icon" data-icon="whatsapp-logo"></span><span>WhatsApp</span>
+      <span class="icon" data-icon="whatsapp-logo"></span><span>WhatsApp <span class="sr-only" data-i18n="a11y.newTab">(opens in a new tab)</span></span>
     </a>
     <button type="button" class="mb-price" id="barPrice" data-i18n="bar.price">Get price</button>
   </nav>

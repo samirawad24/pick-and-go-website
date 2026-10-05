@@ -17,19 +17,19 @@ const SAMPLE_RATES = true;
 
 const GOOGLE_REVIEWS_URL = 'https://www.google.com/search?sca_esv=e8b56c3c652e1040&sxsrf=ANbL-n7cTqkbdTKSvxShdJ5PpKPdV7AKxA:1780978365495&si=AL3DRZEsmMGCryMMFSHJ3StBhOdZ2-6yYkXd_doETEE1OR-qOT3UT9Q0zT21IhzlQjdLKtOHNw2s08PCSvA9-8YTrZeCY7npVMgBnilEBLt1qc9nxWIjI25SOd4G2Ju2xTfeKl1hIf8-HBP2LqLZi8vmkX7vtRdJcg%3D%3D&q=PICK+%26+GO+RENT+A+CAR+Weston+Reviews&sa=X&ved=2ahUKEwj6vs-2pfmUAxWbmYQIHRxTBYQQ0bkNegQIPBAF&biw=1920&bih=919&dpr=1';
 
-const IMG = id => `https://images.unsplash.com/${id}?w=640&q=80&auto=format&fit=crop`;
-
 const CARS = [
-  { id: 'sedan',   rate: 55,  img: IMG('photo-1623869675781-80aa31012a5a'), models: 'Kia Forte' },
-  { id: 'suv',     rate: 75,  img: IMG('photo-1617469767053-d3b523a0b982'), models: 'Toyota RAV4, VW Tiguan' },
-  { id: 'minivan', rate: 95,  img: IMG('photo-1623371857133-6d5552bbdc13'), models: 'Honda Odyssey, Toyota Sienna, Chrysler Pacifica' },
-  { id: 'luxury',  rate: 160, img: IMG('photo-1683778547049-8d969766b441'), models: 'Cadillac Escalade, Chevrolet Suburban' }
+  { id: 'sedan',   rate: 55,  img: 'img/sedan.jpg', models: 'Kia Forte' },
+  { id: 'suv',     rate: 75,  img: 'img/suv.jpg', models: 'Toyota RAV4, VW Tiguan' },
+  { id: 'minivan', rate: 95,  img: 'img/minivan.jpg', models: 'Honda Odyssey, Toyota Sienna, Chrysler Pacifica' },
+  { id: 'luxury',  rate: 160, img: 'img/luxury.jpg', models: 'Cadillac Escalade, Chevrolet Suburban' }
 ];
 
 const LOCATIONS = ['mia', 'fll', 'portmia', 'portfll', 'hotel'];
 
 /* Icons: Phosphor (bold, star is fill), inlined so nothing extra loads */
 const ICON_PATHS = {
+  'pause': '<path d="M200,28H160a20,20,0,0,0-20,20V208a20,20,0,0,0,20,20h40a20,20,0,0,0,20-20V48A20,20,0,0,0,200,28Zm-4,176H164V52h32ZM96,28H56A20,20,0,0,0,36,48V208a20,20,0,0,0,20,20H96a20,20,0,0,0,20-20V48A20,20,0,0,0,96,28ZM92,204H60V52H92Z"/>',
+  'play': '<path d="M234.49,111.07,90.41,22.94A20,20,0,0,0,60,39.87V216.13a20,20,0,0,0,30.41,16.93l144.08-88.13a19.82,19.82,0,0,0,0-33.86ZM84,208.85V47.15L216.16,128Z"/>',
   'airplane-landing': '<path d="M256,216a12,12,0,0,1-12,12H104a12,12,0,0,1,0-24H244A12,12,0,0,1,256,216Zm-27.24-24.45L52.14,142.09A44.13,44.13,0,0,1,20,99.72V48A20,20,0,0,1,46.32,29l5.48,1.83a12,12,0,0,1,7.49,7.3L69.2,65.59,92,72.09V48a20,20,0,0,1,26.32-19l5.48,1.83a12,12,0,0,1,7.27,6.74l21.75,51.85,59,16.49A44.12,44.12,0,0,1,244,148.32V180a12,12,0,0,1-15.24,11.55ZM220,148.32a20.05,20.05,0,0,0-14.65-19.27L140.77,111a12,12,0,0,1-7.84-6.91L116,63.71V88a12,12,0,0,1-15.29,11.54L56.71,87a12,12,0,0,1-8-7.46L44,66.48V99.72A20.07,20.07,0,0,0,58.61,119L220,164.18Z"/>',
   'arrow-left': '<path d="M228,128a12,12,0,0,1-12,12H69l51.52,51.51a12,12,0,0,1-17,17l-72-72a12,12,0,0,1,0-17l72-72a12,12,0,0,1,17,17L69,116H216A12,12,0,0,1,228,128Z"/>',
   'caret-right': '<path d="M184.49,136.49l-80,80a12,12,0,0,1-17-17L159,128,87.51,56.49a12,12,0,1,1,17-17l80,80A12,12,0,0,1,184.49,136.49Z"/>',
@@ -71,7 +71,7 @@ const T = {
     'facts.lang': 'we answer in both',
 
     'covers.title': 'What your price covers',
-    'covers.lede': 'You pay the amount on your quote. We add nothing at pickup.',
+    'covers.lede': 'Your quote includes taxes and everything below. We hold a refundable security deposit at pickup.',
     'covers.i1': 'Collision and liability insurance',
     'covers.i2': 'Unlimited miles within Florida',
     'covers.i3': 'Tolls, with no SunPass to buy',
@@ -79,7 +79,8 @@ const T = {
     'covers.i5': 'Delivery to the airport, port or hotel',
 
     'fleet.title': 'Choose your car',
-    'fleet.lede': 'Ten vehicles, from a sedan for two to an Escalade for the whole group.',
+    'fleet.lede': 'Ten vehicles, from a compact sedan to a Cadillac Escalade.',
+    'fleet.photoNote': 'Photos are examples. Your car will be one of the models listed.',
     'fleet.cta': 'Get price',
 
     'car.sedan': 'Sedan',
@@ -105,18 +106,36 @@ const T = {
     'how.h3': 'Going home',
     'how.p3': 'Return the car at the airport, the port or your hotel, whichever is on your way.',
 
-    'reviews.title': 'Rated by 21 renters on Google',
+    'reviews.title': '21 reviews on Google',
+    'reviews.note': 'Excerpts from public Google reviews. Some are translated.',
     'reviews.link': 'Read every review',
     'reviews.source': 'Google review',
 
     'faq.title': 'Questions',
 
     'closing.title': 'Questions before you book? Call us.',
-    'closing.sub': 'We answer in English and Spanish, and we can hold a car for you on the call.',
+    'closing.sub': 'Talk to a person, in English or Spanish, before you pay anything.',
     'closing.call': 'Call ' + PHONE_DISPLAY,
     'closing.wa': 'Message on WhatsApp',
 
-    'footer.area': 'Miami and Fort Lauderdale, Florida',
+    'footer.area': 'Car rental in Miami and Fort Lauderdale. Based in Weston, Florida.',
+    'footer.privacy': 'Privacy Policy',
+    'footer.terms': 'Terms and Conditions',
+    'footer.refunds': 'Refund Policy',
+    'footer.cookies': 'Cookie Policy',
+
+    'doc.title': 'Pick & Go Rent A Car | Car rental in Miami and Fort Lauderdale',
+    'a11y.skip': 'Skip to booking',
+    'a11y.newTab': '(opens in a new tab)',
+    'a11y.english': 'English',
+    'a11y.spanish': 'Spanish',
+    'video.pause': 'Pause background video',
+    'video.play': 'Play background video',
+    'alt.sedan': 'White sedan parked beside the ocean',
+    'alt.suv': 'Silver SUV parked in front of trees',
+    'alt.minivan': 'Gray minivan seen from behind',
+    'alt.luxury': 'Black full-size SUV in a dark setting',
+    'alt.drive': 'Open highway under a cloudy sky, seen from the road',
 
     'bar.call': 'Call',
     'bar.price': 'Get price',
@@ -139,7 +158,7 @@ const T = {
     'fn.selectTime': 'Select',
     'fn.name': 'Your name',
     'fn.phone': 'Phone or WhatsApp number',
-    'fn.contactNote': 'We use your number for this reservation and nothing else.',
+    'fn.contactNote': 'By continuing you agree that we may call, text or WhatsApp you at this number about this quote. We send no marketing. See our <a href="privacy.html">Privacy Policy</a>.',
     'fn.errDates': 'Choose your pickup date, time and return date.',
     'fn.errOrder': 'The return date has to be after the pickup date.',
     'fn.errContact': 'Enter your name and a phone number we can reach.',
@@ -148,10 +167,10 @@ const T = {
     'fn.total': 'Estimated total',
     'fn.rateLine': '${rate} per day for {days}.',
     'fn.sample': 'Sample price for this preview.',
-    'fn.confirm': 'We confirm the car and the final price when you call.',
+    'fn.confirm': 'This is an estimate. We confirm your final price, taxes included, before you pay.',
+    'fn.refund': 'Reservations are non-refundable. You can move your dates if you tell us 2 days ahead. <a href="refunds.html">Refund Policy</a>',
     'fn.i1': 'Insurance, tolls and delivery included',
     'fn.i2': 'Unlimited miles within Florida',
-    'fn.i3': 'Move your dates up to 2 days before pickup',
     'fn.call': 'Call to lock it in',
     'fn.wa': 'Send it on WhatsApp',
     'fn.callback': 'Have us call you',
@@ -195,7 +214,7 @@ const T = {
     'facts.lang': 'atendemos en ambos',
 
     'covers.title': 'Lo que cubre tu precio',
-    'covers.lede': 'Pagas el monto de tu cotización. No sumamos nada en la entrega.',
+    'covers.lede': 'Tu cotización incluye impuestos y todo lo de abajo. En la entrega retenemos un depósito reembolsable.',
     'covers.i1': 'Seguro de colisión y responsabilidad civil',
     'covers.i2': 'Millaje ilimitado dentro de Florida',
     'covers.i3': 'Peajes, sin comprar SunPass',
@@ -203,7 +222,8 @@ const T = {
     'covers.i5': 'Entrega en aeropuerto, puerto u hotel',
 
     'fleet.title': 'Elige tu auto',
-    'fleet.lede': 'Diez vehículos, desde un sedán para dos hasta una Escalade para todo el grupo.',
+    'fleet.lede': 'Diez vehículos, desde un sedán compacto hasta una Cadillac Escalade.',
+    'fleet.photoNote': 'Las fotos son de ejemplo. Tu auto será uno de los modelos indicados.',
     'fleet.cta': 'Ver precio',
 
     'car.sedan': 'Sedán',
@@ -229,18 +249,36 @@ const T = {
     'how.h3': 'Al regresar',
     'how.p3': 'Devuelve el auto en el aeropuerto, el puerto o tu hotel, donde te quede mejor.',
 
-    'reviews.title': 'Calificado por 21 clientes en Google',
+    'reviews.title': '21 reseñas en Google',
+    'reviews.note': 'Extractos de reseñas públicas de Google. Algunas están traducidas.',
     'reviews.link': 'Lee todas las reseñas',
     'reviews.source': 'Reseña de Google',
 
     'faq.title': 'Preguntas',
 
     'closing.title': '¿Dudas antes de reservar? Llámanos.',
-    'closing.sub': 'Atendemos en español e inglés, y podemos apartar tu auto en la llamada.',
+    'closing.sub': 'Habla con una persona, en español o inglés, antes de pagar.',
     'closing.call': 'Llama al ' + PHONE_DISPLAY,
     'closing.wa': 'Escribe por WhatsApp',
 
-    'footer.area': 'Miami y Fort Lauderdale, Florida',
+    'footer.area': 'Renta de autos en Miami y Fort Lauderdale. Con base en Weston, Florida.',
+    'footer.privacy': 'Política de privacidad',
+    'footer.terms': 'Términos y condiciones',
+    'footer.refunds': 'Política de reembolsos',
+    'footer.cookies': 'Política de cookies',
+
+    'doc.title': 'Pick & Go Rent A Car | Renta de autos en Miami y Fort Lauderdale',
+    'a11y.skip': 'Ir a la reserva',
+    'a11y.newTab': '(se abre en una pestaña nueva)',
+    'a11y.english': 'Inglés',
+    'a11y.spanish': 'Español',
+    'video.pause': 'Pausar el video de fondo',
+    'video.play': 'Reproducir el video de fondo',
+    'alt.sedan': 'Sedán blanco estacionado junto al mar',
+    'alt.suv': 'SUV plateada estacionada frente a unos árboles',
+    'alt.minivan': 'Minivan gris vista desde atrás',
+    'alt.luxury': 'SUV negra de tamaño completo en un entorno oscuro',
+    'alt.drive': 'Carretera despejada bajo un cielo nublado, vista desde el camino',
 
     'bar.call': 'Llamar',
     'bar.price': 'Ver precio',
@@ -263,7 +301,7 @@ const T = {
     'fn.selectTime': 'Elegir',
     'fn.name': 'Tu nombre',
     'fn.phone': 'Teléfono o WhatsApp',
-    'fn.contactNote': 'Usamos tu número para esta reserva y nada más.',
+    'fn.contactNote': 'Al continuar aceptas que te llamemos o te escribamos por SMS o WhatsApp a este número sobre esta cotización. No enviamos publicidad. Consulta nuestra <a href="privacy.html">Política de privacidad</a>.',
     'fn.errDates': 'Elige la fecha y hora de entrega y la fecha de devolución.',
     'fn.errOrder': 'La devolución tiene que ser después de la entrega.',
     'fn.errContact': 'Escribe tu nombre y un teléfono donde podamos ubicarte.',
@@ -272,10 +310,10 @@ const T = {
     'fn.total': 'Total estimado',
     'fn.rateLine': '${rate} por día, {days}.',
     'fn.sample': 'Precio de muestra para esta vista previa.',
-    'fn.confirm': 'Confirmamos el auto y el precio final cuando llamas.',
+    'fn.confirm': 'Es un estimado. Confirmamos tu precio final, con impuestos, antes de que pagues.',
+    'fn.refund': 'Las reservas no son reembolsables. Puedes cambiar tus fechas si avisas con 2 días de anticipación. <a href="refunds.html">Política de reembolsos</a>',
     'fn.i1': 'Seguro, peajes y entrega incluidos',
     'fn.i2': 'Millaje ilimitado dentro de Florida',
-    'fn.i3': 'Cambia tus fechas hasta 2 días antes de la entrega',
     'fn.call': 'Llama y asegura tu auto',
     'fn.wa': 'Enviar por WhatsApp',
     'fn.callback': 'Prefiero que me llamen',
@@ -320,7 +358,7 @@ const REVIEWS = [
 const FAQ = {
   en: [
     ['What do I need to rent?', "The driver must be 21 or older, with a valid license from any country (Latin alphabet) and a major credit card in their own name. We may hold a refundable security deposit at pickup."],
-    ['Is insurance included?', 'Yes. Collision and liability insurance come with every rental.'],
+    ['Is insurance included?', 'Yes. Collision and liability insurance come with every rental. Your rental agreement lists the coverage limits and any deductible.'],
     ['Where can I pick up the car?', 'Miami International (MIA), Fort Lauderdale (FLL), Port of Miami, Port Everglades, or your hotel or residence. At the airports we meet you at arrivals, so you skip the shuttle and the counter.'],
     ['How do I pay?', "With any major credit card in the main driver's name. We hold a refundable security deposit at pickup and release it when you return the car."],
     ['Can I change my reservation?', 'You can move it to another date if you tell us at least 2 days before pickup. The amount you paid stays as credit toward the new dates. Reservations are non-refundable.'],
@@ -330,7 +368,7 @@ const FAQ = {
   ],
   es: [
     ['¿Qué necesito para rentar?', 'El conductor debe tener 21 años o más, una licencia vigente de cualquier país (alfabeto latino) y una tarjeta de crédito a su nombre. Podemos retener un depósito reembolsable en la entrega.'],
-    ['¿El seguro está incluido?', 'Sí. Cada renta incluye seguro de colisión y responsabilidad civil.'],
+    ['¿El seguro está incluido?', 'Sí. Cada renta incluye seguro de colisión y responsabilidad civil. Tu contrato de renta indica los límites de cobertura y cualquier deducible.'],
     ['¿Dónde puedo recoger el auto?', 'Aeropuerto de Miami (MIA), Aeropuerto de Fort Lauderdale (FLL), Puerto de Miami, Port Everglades, o tu hotel o residencia. En los aeropuertos te recibimos en llegadas, así te ahorras el shuttle y el mostrador.'],
     ['¿Cómo se paga?', 'Con cualquier tarjeta de crédito a nombre del conductor principal. Retenemos un depósito reembolsable en la entrega y lo liberamos cuando devuelves el auto.'],
     ['¿Puedo cambiar mi reserva?', 'Puedes moverla a otra fecha si nos avisas al menos 2 días antes de la entrega. El monto pagado queda como crédito para las nuevas fechas. Las reservas no son reembolsables.'],
@@ -356,6 +394,7 @@ const state = {
   callbackAsked: false
 };
 let lastRenderedStep = 0;
+let badFields = [];
 
 /* ---------- Helpers ---------- */
 const $ = sel => document.querySelector(sel);
@@ -376,6 +415,11 @@ function track(name, params) {
 }
 
 function carById(id) { return CARS.find(c => c.id === id); }
+
+/* Attributes for a required field; marks it invalid and points at the error text */
+function req(id) {
+  return 'required aria-required="true"' + (badFields.includes(id) ? ' aria-invalid="true" aria-describedby="fnErr"' : '');
+}
 
 /* yyyy-mm-dd for a local Date */
 function isoDate(d) {
@@ -503,15 +547,15 @@ function renderStep2() {
         </div>
         <div class="field">
           <label for="fPickupDate">${t('fn.pickupDate')}</label>
-          <input type="date" id="fPickupDate" min="${today}" value="${state.pickupDate}" />
+          <input type="date" id="fPickupDate" min="${today}" value="${state.pickupDate}" ${req('fPickupDate')} />
         </div>
         <div class="field">
           <label for="fPickupTime">${t('fn.pickupTime')}</label>
-          <select id="fPickupTime">${times}</select>
+          <select id="fPickupTime" ${req('fPickupTime')}>${times}</select>
         </div>
         <div class="field">
           <label for="fReturnDate">${t('fn.returnDate')}</label>
-          <input type="date" id="fReturnDate" min="${state.pickupDate || today}" value="${state.returnDate}" />
+          <input type="date" id="fReturnDate" min="${state.pickupDate || today}" value="${state.returnDate}" ${req('fReturnDate')} />
         </div>
         <div class="field">
           <label for="fReturnLoc">${t('fn.returnLoc')}</label>
@@ -521,7 +565,7 @@ function renderStep2() {
           </select>
         </div>
       </div>
-      ${state.error ? `<p class="fn-error" role="alert">${t(state.error)}</p>` : ''}
+      ${state.error ? `<p class="fn-error" id="fnErr" role="alert">${t(state.error)}</p>` : ''}
       <div class="fn-actions">
         <button type="button" class="btn btn-ghost" data-go="1" aria-label="${t('fn.back')}">${icon('arrow-left')}</button>
         <button type="submit" class="btn btn-primary">${t('fn.continue')}</button>
@@ -535,14 +579,14 @@ function renderStep3() {
       <div class="fields">
         <div class="field field-full">
           <label for="fName">${t('fn.name')}</label>
-          <input type="text" id="fName" autocomplete="name" value="${esc(state.name)}" />
+          <input type="text" id="fName" autocomplete="name" value="${esc(state.name)}" ${req('fName')} />
         </div>
         <div class="field field-full">
           <label for="fPhone">${t('fn.phone')}</label>
-          <input type="tel" id="fPhone" autocomplete="tel" inputmode="tel" value="${esc(state.phone)}" />
+          <input type="tel" id="fPhone" autocomplete="tel" inputmode="tel" value="${esc(state.phone)}" ${req('fPhone')} />
         </div>
       </div>
-      ${state.error ? `<p class="fn-error" role="alert">${t(state.error)}</p>` : ''}
+      ${state.error ? `<p class="fn-error" id="fnErr" role="alert">${t(state.error)}</p>` : ''}
       <div class="fn-actions">
         <button type="button" class="btn btn-ghost" data-go="2" aria-label="${t('fn.back')}">${icon('arrow-left')}</button>
         <button type="submit" class="btn btn-primary">${t('fn.showPrice')}</button>
@@ -577,16 +621,16 @@ function renderStep4() {
         <b>$${total.toLocaleString('en-US')}</b>
       </div>
     </div>
-    <p class="quote-note">${t('fn.rateLine', { rate: car.rate, days: daysLabel(days) })} ${SAMPLE_RATES ? t('fn.sample') : t('fn.confirm')}</p>
+    <p class="quote-note">${t('fn.rateLine', { rate: car.rate, days: daysLabel(days) })} ${t('fn.confirm')}${SAMPLE_RATES ? ' ' + t('fn.sample') : ''}</p>
     <ul class="quote-incl">
       <li>${icon('check')}<span>${t('fn.i1')}</span></li>
       <li>${icon('check')}<span>${t('fn.i2')}</span></li>
-      <li>${icon('check')}<span>${t('fn.i3')}</span></li>
     </ul>
     <div class="quote-actions">
       <a class="btn btn-primary btn-lg btn-block" href="tel:${PHONE_TEL}" data-track="call_quote">${icon('phone')}<span>${t('fn.call')}</span></a>
-      <a class="btn btn-wa btn-block" href="${waLink(quoteMessage())}" target="_blank" rel="noopener" data-track="wa_quote">${icon('whatsapp-logo')}<span>${t('fn.wa')}</span></a>
+      <a class="btn btn-wa btn-block" href="${waLink(quoteMessage())}" target="_blank" rel="noopener" data-track="wa_quote">${icon('whatsapp-logo')}<span>${t('fn.wa')} <span class="sr-only">${t('a11y.newTab')}</span></span></a>
     </div>
+    <p class="fn-small fn-refund">${t('fn.refund')}</p>
     ${callback}
     <div class="quote-foot">
       ${state.callbackAsked ? '<span></span>' : `<button type="button" class="link-btn" id="fnCallback">${t('fn.callback')}</button>`}
@@ -620,9 +664,17 @@ function scrollToFunnel() {
   el.scrollIntoView({ behavior: reduce ? 'auto' : 'smooth', block: 'start' });
 }
 
+/* Re-render with the error shown and put focus on the first field that needs fixing */
+function failStep() {
+  renderFunnel({ focus: false });
+  const first = document.getElementById(badFields[0]);
+  if (first) first.focus();
+}
+
 function goStep(n, opts) {
   state.step = n;
   state.error = '';
+  badFields = [];
   renderFunnel(Object.assign({ focus: true }, opts));
   track('funnel_step', { step: n, car: state.car || '' });
 }
@@ -663,8 +715,12 @@ function bindFunnel() {
     e.preventDefault();
     readFields();
     const a = parseDate(state.pickupDate), b = parseDate(state.returnDate);
-    if (!a || !b || !state.pickupTime) { state.error = 'fn.errDates'; return renderFunnel({ focus: false }); }
-    if (b <= a) { state.error = 'fn.errOrder'; return renderFunnel({ focus: false }); }
+    badFields = [];
+    if (!a) badFields.push('fPickupDate');
+    if (!state.pickupTime) badFields.push('fPickupTime');
+    if (!b) badFields.push('fReturnDate');
+    if (badFields.length) { state.error = 'fn.errDates'; return failStep(); }
+    if (b <= a) { badFields = ['fReturnDate']; state.error = 'fn.errOrder'; return failStep(); }
     goStep(3);
   });
 
@@ -673,7 +729,10 @@ function bindFunnel() {
     e.preventDefault();
     readFields();
     const digits = state.phone.replace(/\D/g, '');
-    if (state.name.trim().length < 2 || digits.length < 7) { state.error = 'fn.errContact'; return renderFunnel({ focus: false }); }
+    badFields = [];
+    if (state.name.trim().length < 2) badFields.push('fName');
+    if (digits.length < 7) badFields.push('fPhone');
+    if (badFields.length) { state.error = 'fn.errContact'; return failStep(); }
     state.name = state.name.trim();
     state.phone = state.phone.trim();
     state.callbackAsked = false;
@@ -718,7 +777,7 @@ function renderFleet() {
   if (!grid) return;
   grid.innerHTML = CARS.map(c => `
     <article class="fleet-card">
-      <div class="fleet-photo"><img src="${c.img}" alt="${esc(c.models)}" width="640" height="400" loading="lazy" /></div>
+      <div class="fleet-photo"><img src="${c.img}" alt="${esc(t('alt.' + c.id))}" width="800" height="500" loading="lazy" /></div>
       <div class="fleet-body">
         <h3>${t('car.' + c.id)}</h3>
         <p class="fleet-models">${c.models}</p>
@@ -755,12 +814,25 @@ function renderFaq() {
     </details>`).join('');
 }
 
+/* ---------- Background video control ---------- */
+function syncVideoButton() {
+  const btn = $('#videoToggle'), v = $('.hero-video');
+  if (!btn || !v) return;
+  const paused = v.paused;
+  btn.innerHTML = icon(paused ? 'play' : 'pause');
+  btn.setAttribute('aria-label', t(paused ? 'video.play' : 'video.pause'));
+}
+
 /* ---------- Language ---------- */
 function applyLanguage(next) {
   readFields();
   lang = T[next] ? next : 'en';
   document.documentElement.lang = lang;
+  document.title = t('doc.title');
   document.querySelectorAll('[data-i18n]').forEach(el => { el.textContent = t(el.dataset.i18n); });
+  document.querySelectorAll('[data-i18n-aria]').forEach(el => { el.setAttribute('aria-label', t(el.dataset.i18nAria)); });
+  document.querySelectorAll('[data-i18n-alt]').forEach(el => { el.setAttribute('alt', t(el.dataset.i18nAlt)); });
+  syncVideoButton();
   document.querySelectorAll('.lang button').forEach(b => b.setAttribute('aria-pressed', String(b.dataset.lang === lang)));
   document.querySelectorAll('a[data-wa]').forEach(a => { a.href = waLink(t('wa.general')); });
   renderFunnel();
@@ -794,6 +866,13 @@ document.addEventListener('DOMContentLoaded', () => {
   document.querySelectorAll('.lang button').forEach(b => {
     b.addEventListener('click', () => applyLanguage(b.dataset.lang));
   });
+
+  const video = $('.hero-video'), videoBtn = $('#videoToggle');
+  if (video && videoBtn) {
+    videoBtn.addEventListener('click', () => { if (video.paused) video.play().catch(() => {}); else video.pause(); });
+    video.addEventListener('play', syncVideoButton);
+    video.addEventListener('pause', syncVideoButton);
+  }
 
   const barPrice = $('#barPrice');
   if (barPrice) barPrice.addEventListener('click', scrollToFunnel);
