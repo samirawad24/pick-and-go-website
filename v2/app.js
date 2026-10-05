@@ -80,7 +80,7 @@ const T = {
 
     'fleet.title': 'Choose your car',
     'fleet.lede': 'Ten vehicles, from a compact sedan to a Cadillac Escalade.',
-    'fleet.photoNote': 'Photos are examples. Your car will be one of the models listed.',
+    'fleet.photoNote': 'Photos show the type of vehicle, not the exact model. Your car will be one of the models listed.',
     'fleet.cta': 'Get price',
 
     'car.sedan': 'Sedan',
@@ -223,7 +223,7 @@ const T = {
 
     'fleet.title': 'Elige tu auto',
     'fleet.lede': 'Diez vehículos, desde un sedán compacto hasta una Cadillac Escalade.',
-    'fleet.photoNote': 'Las fotos son de ejemplo. Tu auto será uno de los modelos indicados.',
+    'fleet.photoNote': 'Las fotos muestran el tipo de vehículo, no el modelo exacto. Tu auto será uno de los modelos indicados.',
     'fleet.cta': 'Ver precio',
 
     'car.sedan': 'Sedán',
