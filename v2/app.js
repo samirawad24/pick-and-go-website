@@ -130,8 +130,6 @@ const T = {
     'a11y.newTab': '(opens in a new tab)',
     'a11y.english': 'English',
     'a11y.spanish': 'Spanish',
-    'video.pause': 'Pause background video',
-    'video.play': 'Play background video',
     'alt.sedan': 'White sedan parked beside the ocean',
     'alt.suv': 'Silver SUV parked in front of trees',
     'alt.minivan': 'Gray minivan seen from behind',
@@ -273,8 +271,6 @@ const T = {
     'a11y.newTab': '(se abre en una pestaña nueva)',
     'a11y.english': 'Inglés',
     'a11y.spanish': 'Español',
-    'video.pause': 'Pausar el video de fondo',
-    'video.play': 'Reproducir el video de fondo',
     'alt.sedan': 'Sedán blanco estacionado junto al mar',
     'alt.suv': 'SUV plateada estacionada frente a unos árboles',
     'alt.minivan': 'Minivan gris vista desde atrás',
@@ -815,15 +811,6 @@ function renderFaq() {
     </details>`).join('');
 }
 
-/* ---------- Background video control ---------- */
-function syncVideoButton() {
-  const btn = $('#videoToggle'), v = $('.hero-video');
-  if (!btn || !v) return;
-  const paused = v.paused;
-  btn.innerHTML = icon(paused ? 'play' : 'pause');
-  btn.setAttribute('aria-label', t(paused ? 'video.play' : 'video.pause'));
-}
-
 /* ---------- Language ---------- */
 function applyLanguage(next) {
   readFields();
@@ -833,7 +820,6 @@ function applyLanguage(next) {
   document.querySelectorAll('[data-i18n]').forEach(el => { el.textContent = t(el.dataset.i18n); });
   document.querySelectorAll('[data-i18n-aria]').forEach(el => { el.setAttribute('aria-label', t(el.dataset.i18nAria)); });
   document.querySelectorAll('[data-i18n-alt]').forEach(el => { el.setAttribute('alt', t(el.dataset.i18nAlt)); });
-  syncVideoButton();
   document.querySelectorAll('.lang button').forEach(b => b.setAttribute('aria-pressed', String(b.dataset.lang === lang)));
   document.querySelectorAll('a[data-wa]').forEach(a => { a.href = waLink(t('wa.general')); });
   renderFunnel();
@@ -867,13 +853,6 @@ document.addEventListener('DOMContentLoaded', () => {
   document.querySelectorAll('.lang button').forEach(b => {
     b.addEventListener('click', () => applyLanguage(b.dataset.lang));
   });
-
-  const video = $('.hero-video'), videoBtn = $('#videoToggle');
-  if (video && videoBtn) {
-    videoBtn.addEventListener('click', () => { if (video.paused) video.play().catch(() => {}); else video.pause(); });
-    video.addEventListener('play', syncVideoButton);
-    video.addEventListener('pause', syncVideoButton);
-  }
 
   const barPrice = $('#barPrice');
   if (barPrice) barPrice.addEventListener('click', scrollToFunnel);
